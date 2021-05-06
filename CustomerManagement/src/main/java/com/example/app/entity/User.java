@@ -31,8 +31,6 @@ public class User implements UserDetails{
 	@Column(name="password")
 	private String password;
 
-	@Column(name="delflg")
-	private int delflg;
 
 	//この下はインターフェースのメソッドを実装する
 

@@ -1,6 +1,7 @@
 package com.example.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +20,12 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	//データベースからアカウント情報を検索する
-    	User user = userRepository.findOne(username);
+    	 User probe = new User();
+         probe.setUsername(username);
+
+         // 検索条件からExampleインスタンスを生成
+         Example<User> example = Example.of(probe);
+         User user = userRepository.findOne(example).get();
     	return user;
     }
 

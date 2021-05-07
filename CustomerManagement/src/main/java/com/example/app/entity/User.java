@@ -23,7 +23,7 @@ public class User implements UserDetails{
 
 	@Id//idであることをアノテーションで明示する
 	@Column(name="id")//DB上のカラム名を指定する
-	private int id;
+	private Integer id;
 
 	@Column(name="username")
 	private String username;
@@ -31,18 +31,22 @@ public class User implements UserDetails{
 	@Column(name="password")
 	private String password;
 
+	@Column(name="delflg")
+	private Integer delflg;
 
 	//この下はインターフェースのメソッドを実装する
 
 	//ユーザーに与えられる権限リストを返却するメソッド
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities(){
+
 		return null;
 	}
 
 	//ユーザー名を返却するメソッド
 	@Override
 	public String getUsername() {
+
 		return this.username;
 	}
 

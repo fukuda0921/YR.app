@@ -20,6 +20,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	//データベースからアカウント情報を検索する
+//    	User user = userRepository.find(username);
     	 User probe = new User();
          probe.setUsername(username);
 

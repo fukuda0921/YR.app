@@ -12,23 +12,22 @@ import com.example.app.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
-	//ユーザーテーブルの取得用repositoryのインスタンス生成
-	@Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
+ //ユーザーテーブルの取得用repositoryのインスタンス生成
+ @Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
     private UserRepository userRepository;
 
-	//与えられたユーザー名を用いてUserDetailsを取得し返却するメソッド
+ //与えられたユーザー名を用いてUserDetailsを取得し返却するメソッド
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	//データベースからアカウント情報を検索する
-//    	User user = userRepository.find(username);
-    	 User probe = new User();
+ //データベースからアカウント情報を検索する
+//     User user = userRepository.find(username);
+      User probe = new User();
          probe.setUsername(username);
 
          // 検索条件からExampleインスタンスを生成
          Example<User> example = Example.of(probe);
          User user = userRepository.findOne(example).get();
-    	return user;
+     return user;
     }
 
 }
-

@@ -10,14 +10,12 @@ import javax.persistence.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+
 
 //ユーザー情報Entity
-
+@Data
 @Entity//エンティティクラスのアノテーション
-@Getter//Getterの自動生成のアノテーション
-@Setter//Setterの自動生成のアノテーション
 @Table(name="member")//テーブル名の指定
 public class User implements UserDetails{
 

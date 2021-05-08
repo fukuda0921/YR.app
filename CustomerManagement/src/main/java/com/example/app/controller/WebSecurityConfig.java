@@ -71,7 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
          //ログイン画面は常にアクセス可能とする
          .loginPage("/login").permitAll()
          //ログインに成功したら検索画面に遷移する
-         .defaultSuccessUrl("/sample")
+         .defaultSuccessUrl("/")
          .and()
          //ログイン画面のcssファイルとしても共通のdemo.cssを利用するため、
          //src/main/resources/static/cssフォルダ下は常にアクセス可能とする

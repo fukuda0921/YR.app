@@ -9,7 +9,7 @@ public class UserController {
 	public String login(){
 		return "login";
 	}
-	@GetMapping("/sample")
+	@GetMapping("/")
 	public String index(){
 		return "sample";
 	}

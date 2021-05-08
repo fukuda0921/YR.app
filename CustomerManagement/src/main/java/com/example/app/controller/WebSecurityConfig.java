@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    //認証用パスワードはハッシュ化して扱うためPasswordをハッシュ化する際に必要なBCryptPasswordEncoder()を返すメソッドを作成しておく。
+//認証用パスワードはハッシュ化して扱うためPasswordをハッシュ化する際に必要なBCryptPasswordEncoder()を返すメソッドを作成しておく。
     @Bean
     public PasswordEncoder passwordEncoder() {
 
@@ -59,13 +59,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            	.antMatchers("/login").permitAll()
-                .anyRequest().authenticated();
-        http
-        	.formLogin()
-                .defaultSuccessUrl("/sample", true);
+//        http
+//            .authorizeRequests()
+//            	.antMatchers("/login").permitAll()
+//                .anyRequest().authenticated();
+//        http
+//        	.formLogin()
+//        		.loginPage("/login").permitAll()
+//                .defaultSuccessUrl("/sample", true);
+    	 http.formLogin()
+         //ログイン画面は常にアクセス可能とする
+         .loginPage("/login").permitAll()
+         //ログインに成功したら検索画面に遷移する
+         .defaultSuccessUrl("/sample")
+         .and()
+         //ログイン画面のcssファイルとしても共通のdemo.cssを利用するため、
+         //src/main/resources/static/cssフォルダ下は常にアクセス可能とする
+         .authorizeRequests().antMatchers("/css/**").permitAll()
+         .and()    //かつ
+         //それ以外の画面は全て認証を有効にする
+         .authorizeRequests().anyRequest().authenticated()
+         .and()    //かつ
+         //ログアウト時はログイン画面に遷移する
+         .logout().logoutSuccessUrl("/login").permitAll();
     }
 
     /**

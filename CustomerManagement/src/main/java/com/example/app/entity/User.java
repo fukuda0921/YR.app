@@ -16,7 +16,7 @@ import lombok.Data;
 //ユーザー情報Entity
 @Data
 @Entity//エンティティクラスのアノテーション
-@Table(name="member")//テーブル名の指定
+@Table(name="users")//テーブル名の指定
 public class User implements UserDetails{
 
 	@Id//idであることをアノテーションで明示する

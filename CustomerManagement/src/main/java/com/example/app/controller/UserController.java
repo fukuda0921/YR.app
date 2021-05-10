@@ -14,3 +14,6 @@ public class UserController {
 		return "sample";
 	}
 }
+
+
+//test

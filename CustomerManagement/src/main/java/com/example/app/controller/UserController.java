@@ -13,6 +13,7 @@ import com.example.app.service.UserDetailsServiceImpl;
 @Controller
 
 public class UserController {
+	@Autowired
 	UserDetailsServiceImpl UserDetailsServiceImpl;
 
 	@GetMapping("/login")

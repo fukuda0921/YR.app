@@ -4,6 +4,8 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,10 +18,11 @@ import lombok.Data;
 //ユーザー情報Entity
 @Data
 @Entity//エンティティクラスのアノテーション
-@Table(name="member")//テーブル名の指定
+@Table(name="users")//テーブル名の指定
 public class User implements UserDetails{
 
 	@Id//idであることをアノテーションで明示する
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")//DB上のカラム名を指定する
 	private Integer id;
 
@@ -77,5 +80,7 @@ public class User implements UserDetails{
 	public boolean isEnabled() {
 		return true;
 	}
+
+
 
 }

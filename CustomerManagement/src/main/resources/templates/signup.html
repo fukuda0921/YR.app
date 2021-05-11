@@ -9,7 +9,7 @@
 <body>
 <div class="box">
    <h1>新規登録ページ</h1>
-  <form action="signups" method="post">
+   <form th:action="@{/signup}" th:method="post">
         <p>ユーザID</p>
         <input type="text" id="username" name="username" autofocus="autofocus" />
         <p>パスワード</p>

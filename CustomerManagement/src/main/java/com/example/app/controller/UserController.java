@@ -29,6 +29,7 @@ public class UserController {
 	public String index(){
 		return "sample";
 	}
+
 	@GetMapping("/signup")
 	public String signup(){
 		return "signup";
@@ -43,3 +44,5 @@ public class UserController {
 
 
 }
+
+

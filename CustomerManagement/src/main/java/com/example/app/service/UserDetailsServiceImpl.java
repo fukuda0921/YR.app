@@ -17,7 +17,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
     private UserRepository userRepository;
 
  //与えられたユーザー名を用いてUserDetailsを取得し返却するメソッド
-    @Override
+ @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
  //データベースからアカウント情報を検索する
 //     User user = userRepository.find(username);
@@ -29,5 +29,14 @@ public class UserDetailsServiceImpl implements UserDetailsService{
          User user = userRepository.findOne(example).get();
      return user;
     }
+
+
+    public void save(String username, String password) {
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		System.out.println(user);
+		userRepository.save(user);
+	}
 
 }

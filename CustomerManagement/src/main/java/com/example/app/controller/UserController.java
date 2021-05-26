@@ -27,7 +27,7 @@ public class UserController {
 	}
 	@GetMapping("/")
 	public String index(){
-		return "sample";
+		return "top";
 	}
 
 	@GetMapping("/signup")

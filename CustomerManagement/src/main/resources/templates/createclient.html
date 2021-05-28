@@ -1,12 +1,17 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignUp</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link th:href="@{/css/CreateClient.css}" rel="stylesheet" />
+<title>SignUp</title>
 </head>
 <body>
-<div class="box">
+	<!--  <div class="box">
    <h1>顧客登録ページ</h1>
    <form th:action="@{/postclient}" th:method="post">
         <p>会社名</p>
@@ -39,6 +44,79 @@
 
         <button type="submit">登録</button>
    </form>
-</div>
+</div-->
+	<div class="main">
+		<div class="header">
+			<div class="top-title">＠顧客管理システム</div>
+			<ul class="ddmenu">
+				<li><a href="#">≡</a>
+					<ul>
+						<li><a href="#">ユーザ名</a></li>
+						<li><a href="#">ログアウト</a></li>
+
+					</ul></li>
+			</ul>
+		</div>
+		<div class="form-main">
+			<form class="contact" action="index.html" method="post">
+				<div class="title">
+					<h2 class="form__headline">顧客新規登録画面</h2>
+					<ol class="btn-group">
+						<button type="submit" class="btn btn-primary" id="button-back">戻る</button>
+						<button type="submit" class="btn btn-primary" id="button-create">登録</button>
+					</ol>
+				</div>
+				<dl>
+					<dt>顧客名</dt>
+					<dd>
+						<input type="text" name="name" class="name">
+					</dd>
+					<dt>郵便番号</dt>
+					<dd>
+						<input type="text" name="postal_code" class="number"
+							placeholder="000-0000">
+					</dd>
+					<dt>都道府県</dt>
+					<dd>
+						<select class="type" name="prefectures" title="都道府県は必ず指定してください">
+							<option value="" disabled selected th:each="prefectures : ${prefectures}"
+								th:value="${prefectures.id}"
+								th:text="${prefectures.prefectures}">選択してください</option>
+						</select>
+					</dd>
+					<dt>住所</dt>
+					<dd>
+						<input type="text" name="street_address" class="address">
+					</dd>
+					<dt>電話番号1</dt>
+					<dd>
+						<input type="tel" name="phone_number" class="tel"
+							placeholder="(例) 090-0000-0000">
+					</dd>
+					<dt>電話番号2</dt>
+					<dd>
+						<input type="tel" name="phone_number_sub" class="tel"
+							placeholder="(例) 090-0000-0000">
+					</dd>
+					<dt>業種</dt>
+					<dd>
+						<select class="type" name="industry" title="業種は必ず指定してください">
+
+							<option value="" selected th:each="industry : ${industry}"
+								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
+						</select>
+					</dd>
+				</dl>
+			</form>
+			<div class="main-right">
+				<p id="fixed"></p>
+				<div class="box1">
+					<p>コール日</p>
+					
+					<p>会社名</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

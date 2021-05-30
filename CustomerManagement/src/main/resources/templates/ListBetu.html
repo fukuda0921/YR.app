@@ -1,6 +1,5 @@
   <!-- 条件別リスト一覧画面 -->
 
-
 <!DOCTYPE html>
   <html lang="ja">
     <head>
@@ -8,118 +7,93 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>条件別リスト一覧画面</title>
-  <!-- 追加で作成したBootStrap以外のCSSの読み込み -->
-  <link href="css/ListBetu.css" rel="stylesheet">
-  <!-- BootstrapのwebからとってきたCSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-  <!-- jQuery読み込み -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- BootstrapのWebから取ってきたJavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-  
-  
+
+      <!-- 追加で作成したBootStrap以外のCSSの読み込み -->
+      <link href="css/ListBetu.css" rel="stylesheet">
+      <!-- BootstrapのwebからとってきたCSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+      <!-- jQuery読み込み -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- BootstrapのWebから取ってきたJavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
     </head>
     <body>
-  
+
+      <!--header(仮)-->
       <header>
         &emsp; <h3>＠顧客管理システム</h3>
       </header>
-  
-      
+
+
       <main>
         <br>
+          <!--戻るボタン(bootstrapを使用)-->
+          <div class = "btn0">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#testModal" style="width:10%;padding:5px;font-size:20px;">←戻る</button>
+          </div>
+
+        <!--見出し。-->
+        <h1><span class="mgl-30"></span>条件別リスト一覧</h1>
         <br>
-        <h1><span class="mgl-30"></span>条件別リスト</h1>
         <br>
-        <br>
-        <!--リスト一覧-->
-        <div class ="">
-          <h3><span class="mgl-30"></span>地域別</h3>
-          <form action="" method="">
-            <div class="mgl-60">
-              <ul>
-              <li><a href="">北海道</a></li>
-              <li><a href="">青森</a> &emsp;
-                  <a href="">岩手</a> &emsp;
-                  <a href="">宮城</a> &emsp;
-                  <a href="">秋田</a> &emsp;
-                  <a href="">山形</a> &emsp;
-                  <a href="">福島</a> &emsp;
-              </li>
-              <li><a href="">東京</a> &emsp;
-                  <a href="">茨城</a> &emsp;
-                  <a href="">神奈川</a> &emsp;
-                  <a href="">栃木</a> &emsp;
-                  <a href="">千葉</a> &emsp;
-                  <a href="">群馬</a> &emsp;
-                  <a href="">山梨</a> &emsp;
-                  <a href="">埼玉</a> &emsp;
-              </li>
-              <li><a href="">新潟</a> &emsp;
-                  <a href="">長野</a> &emsp;
-                  <a href="">富山</a> &emsp;
-                  <a href="">石川</a> &emsp;
-                  <a href="">福井</a> &emsp;
-              </li>
-              <li><a href="">静岡</a> &emsp;
-                  <a href="">岐阜</a> &emsp;
-                  <a href="">愛知</a> &emsp;
-                  <a href="">三重</a> &emsp;
-              </li>
-              <li><a href="">滋賀</a> &emsp;
-                  <a href="">京都</a> &emsp;
-                  <a href="">兵庫</a> &emsp;
-                  <a href="">大阪</a> &emsp;
-                  <a href="">奈良</a> &emsp;
-                  <a href="">和歌山</a> &emsp;
-              </li>
-              <li><a href="">鳥取</a> &emsp;
-                  <a href="">島根</a> &emsp;
-                  <a href="">岡山</a> &emsp;
-                  <a href="">広島</a> &emsp;
-                  <a href="">山口</a> &emsp;
-              </li>
-              <li><a href="">香川</a> &emsp;
-                  <a href="">愛媛</a> &emsp;
-                  <a href="">徳島</a> &emsp;
-                  <a href="">高知</a> &emsp;
-              </li>
-              <li><a href="">福岡</a> &emsp;
-                  <a href="">佐賀</a> &emsp;
-                  <a href="">長崎</a> &emsp;
-                  <a href="">熊本</a> &emsp;
-                  <a href="">大分</a> &emsp;
-                  <a href="">宮崎</a> &emsp;
-                  <a href="">鹿児島</a> &emsp;
-              </li>
-              <li><a href="">沖縄</a> &emsp;
-              </li>
-              </ul>
-            </div>
-          </form>
+
+       <!--顧客情報一覧テーブル(bootstrapを使用)-->
+       <div class="container">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><h3>リスト名</h3></th>
+                <th></th>
+                <th><h3>リスト作成日</h3></th>
+                <th><h3>リスト作成者</h3></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!--会社名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
+                <th scope="row"><button type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>北海道リスト</h3></a></button></th>
+                  <td></td>
+                  <td><h4>2021/05/01</h4></td>
+                  <td><h4>小泉恭介</h4></td>
+              </tr>
+              <tr>
+                <!--会社名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
+                <th scope="row"><butttoon type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>東京リスト</h3></a></button></th>
+                  <td></td>
+                  <td><h4>2021/05/01</h4></td>
+                  <td><h4>小泉恭介</h4></td>
+              </tr>
+              <tr>
+                <!--会社名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
+                <th scope="row"><button type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>大阪リスト</h3></a></button></th>
+                  <td></td>
+                  <td><h4>2021/05/01</h4></td>
+                  <td><h4>小泉恭介</h4></td>
+              </tr>
+              <tr>
+                <!--会社名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
+                <th scope="row"><button type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>飲食店リスト</h3></a></button></th>
+                  <td></td>
+                  <td><h4>2021/05/01</h4></td>
+                  <td><h4>小泉恭介</h4></td>
+              </tr>
+              <tr>
+                <!--会社名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
+                <th scope="row"><button type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>電気屋リスト</h3></a></button></th>
+                  <td></td>
+                  <td><h4>2021/05/01</h4></td>
+                  <td><h4>小泉恭介</h4></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         </div>
         <br>
         <br>
-        <div class ="">
-          <h3><span class="mgl-30"></span>業種別</h3>
-          <form action="" method="">
-            <div class="mgl-60">
-              <ul>
-              <li><a href="">飲食店</a></li>
-              <li><a href="">電気屋</a></li> 
-              <li><a href="">その他</a></li>
-              </ul>
-            </div>  
-          </form> 
-       </div>
-       <br>
-       <br>
-       <br>
-       <br>
-        <!--戻るボタン-->
-        <p>
-          <button type="button" class="btn btn-outline-primary" style="margin:10;width:8%;padding:5px;font-size:18px;">←戻る</button>
-        </p>
+        <br>
+        <br>
       </main>
     </body>
   </html>

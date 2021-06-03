@@ -13,6 +13,7 @@ import lombok.Data;
 @Entity//エンティティクラスのアノテーション
 @Table(name="customers")
 public class Client {
+
 	@Id//idであることをアノテーションで明示する
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")//DB上のカラム名を指定する

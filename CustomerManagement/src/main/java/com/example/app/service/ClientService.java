@@ -21,12 +21,12 @@ public class ClientService {
 	 @Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
 	 private IndustryRepository industryRepository;
 
-    public void save(String name,String postal_code, Integer prefectures,String street_address,
+    public void save(String name,String postal_code, Integer prefectureId,String street_address,
     		         String phone_number,String phone_number_sub, Integer industry) {
     	Client client = new Client();
     	client.setName(name);
     	client.setPostal_code(postal_code);
-    	client.setPrefectures(prefectures);
+    	client.setPrefectures(prefectureId);
     	client.setStreet_address(street_address);
     	client.setPhone_number(phone_number);
     	client.setPhone_number_sub(phone_number_sub);
@@ -40,5 +40,9 @@ public class ClientService {
 
 	public List<Industry> findAllIndustry() {
 		return industryRepository.findAll();
+	}
+
+	public List<Client> findAllCustomrelist() {
+		return clientRepository.findAll();
 	}
 }

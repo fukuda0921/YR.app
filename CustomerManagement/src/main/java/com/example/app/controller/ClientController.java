@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.app.entity.Client;
 import com.example.app.entity.Industry;
 import com.example.app.entity.Prefectures;
 import com.example.app.from.client;
 import com.example.app.service.ClientService;
-
 @Controller
 public class ClientController {
 
@@ -29,6 +29,20 @@ public class ClientController {
 		model.addAttribute("industry", industry);
 		return "createclient";
 	}
+	@GetMapping("/customerlist")
+	public String customerlist(Model model){
+		List<Prefectures> prefectures = clientService.findAllPrefectures();
+		model.addAttribute("prefectures", prefectures);
+		System.out.println(prefectures);
+		List<Industry> industry  = clientService.findAllIndustry();
+		model.addAttribute("industry", industry);
+		System.out.println(industry);
+		List<Client> customerlist = clientService.findAllCustomrelist();
+		System.out.println(customerlist);
+		model.addAttribute("customerlist",customerlist);
+		return "customerlist";
+	}
+
 
 	@RequestMapping(value = "/postclient", method = RequestMethod.POST)
 	public String signup(@ModelAttribute client client) {

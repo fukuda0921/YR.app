@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+</head>
+<body>
+<div class="box">
+   <h1>顧客登録ページ</h1>
+   <form th:action="@{/search}" th:method="post">
+        <p>会社名</p>
+        <input type="text" id="name" name="name" autofocus="autofocus" />
+        <p>携帯番号1</p>
+        <input type="text" id="phone_number" name="phone_number" autofocus="autofocus" /><br/>
+        <p>業種</p>
+         <select id="industry" name="industry">
+	     <option th:each="industry : ${industry}"
+	           th:value="${industry.id}"
+	           th:text="${industry.industry}"
+	           >
+	     </option>
+         </select><br/>
+        <p>住所（都道府県）</p>
+         <select id="prefectures" name="prefectures">
+	     <option th:each="prefectures : ${prefectures}"
+	           th:value="${prefectures.id}"
+	           th:text="${prefectures.prefectures}"
+	           >
+	     </option>
+         </select><br/>
+        <button type="submit">検索</button>
+   </form>
+   <table class="table table-striped">
+   <tr th:each="customer : ${result}">
+   <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.phone_number}"></td>
+    </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -47,7 +47,7 @@ public class ClientService {
 
 	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures) {
 		List<Client> result;
-		if ("".equals(name) && "".equals(phone_number) && industry == 1 && prefectures == 1) {
+		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0) {
 			result = clientRepository.findAll();
 		} else {
 			result = clientCustomRepository.search(name, phone_number, industry, prefectures);

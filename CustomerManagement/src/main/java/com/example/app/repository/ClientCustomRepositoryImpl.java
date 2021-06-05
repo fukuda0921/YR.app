@@ -39,13 +39,13 @@ public class ClientCustomRepositoryImpl implements ClientCustomRepository {
 			andFlg = true;
 		}
 
-		if (industry_id != 1) {
+		if (industry_id != 0) {
 			if (andFlg) sql.append(" AND ");
 			sql.append("g.industry = :industry_id ");
 			industryFlg = true;
 			andFlg = true;
 		}
-		if (prefectures != 1) {
+		if (prefectures != 0) {
 			if (andFlg) sql.append(" AND ");
 			sql.append("g.prefectures = :prefectures ");
 			prefecturesFlg = true;

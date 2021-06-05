@@ -58,7 +58,7 @@
 			</ul>
 		</div>
 		<div class="form-main">
-			<form class="contact" action="index.html" method="post">
+			<form class="contact" th:action="@{/postclient}" th:method="post">
 				<div class="title">
 					<h2 class="form__headline">顧客新規登録画面</h2>
 					<ol class="btn-group">
@@ -79,7 +79,7 @@
 					<dt>都道府県</dt>
 					<dd>
 						<select class="type" name="prefectures" title="都道府県は必ず指定してください">
-							<option value="" disabled selected th:each="prefectures : ${prefectures}"
+							<option  th:each="prefectures : ${prefectures}"
 								th:value="${prefectures.id}"
 								th:text="${prefectures.prefectures}">選択してください</option>
 						</select>
@@ -102,7 +102,7 @@
 					<dd>
 						<select class="type" name="industry" title="業種は必ず指定してください">
 
-							<option value="" selected th:each="industry : ${industry}"
+							<option th:each="industry : ${industry}"
 								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
 						</select>
 					</dd>

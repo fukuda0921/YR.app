@@ -1,0 +1,380 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
+    background-color: rgb(202, 209, 200, 0.25);
+}
+
+header {
+    height: 10%;
+}
+
+form {
+    width: 75%;
+    height: 750px;
+    padding: 30px 50px;
+}
+
+.form-main {
+    width: 100%;
+    display: flex;
+}
+
+.control-group {
+    display: flex;
+}
+
+.tel {
+    font-size: 15px;
+}
+
+.main-right {
+    float: right;
+    height: 730px;
+    width: 26%;
+    background-color: white;
+}
+
+.title {
+    display: flex;
+}
+
+.btn-group {
+    margin-left: auto;
+}
+
+#button-back {
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+#button-create {
+    margin-top: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+#kensaku {
+    margin-top: 14px;
+    margin-right: 273px;
+    margin-left: 290px;
+    border-radius: 3px;
+}
+
+#listsakusei {
+    margin-top: 14px;
+    margin-right: 144px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+
+/* top.css */
+
+.header {
+    height: 43px;
+    background-color: gainsboro;
+}
+
+.top-title {
+    color: blue;
+    font-size: 23px;
+    float: left;
+}
+
+.main-left {
+    display: flex;
+}
+
+.select {
+    height: 180px;
+    width: 380px;
+    background-color: rgba(15, 117, 255, 0.5);
+    color: white;
+    display: flex;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+}
+
+.select:after {
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(15, 117, 255, 0.5);
+    content: "";
+}
+
+.select:active {
+    transform: translateY(5px);
+}
+
+.select:active::after {
+    height: 0px;
+}
+
+.category {
+    height: 180px;
+    width: 380px;
+    background-color: rgba(162, 216, 107, 0.99);
+    display: flex;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+}
+
+.category:after {
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgba(162, 216, 107, 0.99);
+    content: "";
+}
+
+.category:active {
+    transform: translateY(5px);
+}
+
+.category:active::after {
+    height: 0px;
+}
+
+.main-left img {
+    height: 100px;
+    width: 100px;
+    padding-top: 33px;
+    padding-left: 17px;
+}
+
+.main-left h1 {
+    color: white;
+    margin: 9px 18px;
+    font-size: 36px;
+}
+
+.main-left h2 {
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.en-select {
+    margin: 0px 0px 0px 127px;
+}
+
+.en-category {
+    margin: 0px 0px 0px 82px;
+}
+
+.main-title {
+    padding-top: 176px;
+    padding-left: 47px;
+    font-size: 35px;
+    color: rgba(24, 25, 34, 0.74);
+}
+
+.manu {
+    font-size: 30px;
+    padding-top: 180px;
+}
+
+.box1 {
+    padding: 0.5em 1em;
+    margin: 0em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.box1 p {
+    margin: 0;
+    padding: 0;
+}
+
+.naminami {
+    font-size: 23px;
+    margin-left: 57px;
+    margin-top: 37px;
+}
+
+#kaden {
+    font-size: 16px;
+    margin-top: 19px;
+    margin-left: -17px;
+}
+
+
+/* -------------------- */
+
+
+/* ▼メニューバーの装飾 */
+
+
+/* -------------------- */
+
+ul.ddmenu {
+    margin: 0px;
+    /* メニューバー外側の余白(ゼロ) */
+    padding: 0px 0px 0px 15px;
+    /* メニューバー内側の余白(左に15px) */
+    float: right;
+}
+
+
+/* -------------------------- */
+
+
+/* ▼メインメニュー項目の装飾 */
+
+
+/* -------------------------- */
+
+ul.ddmenu li {
+    width: 125px;
+    /* メニュー項目の横幅(125px) */
+    display: inline-block;
+    /* ★1:横並びに配置する */
+    list-style-type: none;
+    /* ★2:リストの先頭記号を消す */
+    position: relative;
+    /* ★3:サブメニュー表示の基準位置にする */
+}
+
+ul.ddmenu a {
+    background-color: silver;
+    /* メニュー項目の背景色(濃い赤色) */
+    color: white;
+    /* メニュー項目の文字色(白色) */
+    line-height: 40px;
+    /* メニュー項目のリンクの高さ(40px) */
+    text-align: center;
+    /* メインメニューの文字列の配置(中央寄せ) */
+    text-decoration: none;
+    /* メニュー項目の装飾(下線を消す) */
+    font-weight: bold;
+    /* 太字にする */
+    display: block;
+    /* ★4:項目内全域をリンク可能にする */
+}
+
+ul.ddmenu a:hover {
+    background-color: #ffdddd;
+    /* メニュー項目にマウスが載ったときの背景色(淡いピンク) */
+    color: #dd0000;
+    /* メニュー項目にマウスが載ったときの文字色(濃い赤色) */
+}
+
+
+/* ▼サブメニューは、とりあえず非表示にしておく */
+
+ul.ddmenu ul {
+    display: none;
+    /* ★5:非表示にする */
+}
+
+
+/* -------------------- */
+
+
+/* ▼サブメニューの装飾 */
+
+
+/* -------------------- */
+
+ul.ddmenu ul {
+    display: none;
+    /* ★1:標準では非表示にする */
+    margin: 0px;
+    /* ★2:サブメニュー外側の余白(ゼロ) */
+    padding: 0px;
+    /* ★3:サブメニュー内側の余白(ゼロ) */
+    position: absolute;
+    /* ★4:絶対配置にする */
+}
+
+
+/* ---------------------------------- */
+
+
+/* ▼サブメニューがある場合に開く処理 */
+
+
+/* ※サブメニューが1階層しか存在しない場合の記述 */
+
+
+/* ---------------------------------- */
+
+ul.ddmenu li:hover ul {
+    display: block;
+    /* ★5:マウスポインタが載っている項目の内部にあるリストを表示する */
+}
+
+
+/* ------------------------ */
+
+
+/* ▼サブメニュー項目の装飾 */
+
+
+/* ------------------------ */
+
+ul.ddmenu ul li {
+    /* ※A */
+    width: 135px;
+    /* サブメニュー1項目の横幅(135px) */
+    border-top: 1px solid pink;
+    /* 項目上側の枠線(ピンク色で1pxの実線) */
+}
+
+ul.ddmenu ul li a {
+    /* ※B */
+    line-height: 35px;
+    /* サブメニュー1項目の高さ(35px) */
+    text-align: left;
+    /* 文字列の配置(左寄せ) */
+    padding-left: 5px;
+    /* 文字列前方の余白(5px) */
+    font-weight: normal;
+    /* 太字にはしない */
+}
+
+ul.ddmenu ul li a:hover {
+    /* ※C */
+    background-color: #ffff80;
+    /* サブメニュー項目にマウスが載ったときの背景色(淡い黄色) */
+    color: #005500;
+    /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 1.375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}

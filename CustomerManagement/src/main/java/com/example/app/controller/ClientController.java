@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.app.entity.Client;
 import com.example.app.entity.Industry;
 import com.example.app.entity.Prefectures;
+import com.example.app.entity.Statuses;
 import com.example.app.from.client;
+import com.example.app.repository.ClientRepository;
 import com.example.app.service.ClientService;
 
 @Controller
@@ -21,6 +23,9 @@ public class ClientController {
 
 	@Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
 	 private ClientService clientService;
+
+	 @Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
+	 private ClientRepository clientRepository;
 
 	@GetMapping("/createclient")
 	public String index(Model model){
@@ -46,6 +51,8 @@ public class ClientController {
 		model.addAttribute("prefectures", prefectures);
 		List<Industry> industry  = clientService.findAllIndustry();
 		model.addAttribute("industry", industry);
+		List<Statuses> statuses  = clientService.findAllStatuses();
+		model.addAttribute("statuses", statuses);
 		return "clientsearch";
 	}
 
@@ -61,4 +68,25 @@ public class ClientController {
 		model.addAttribute("industry", industry);
 		return "clientsearch";
 	}
+
+	@GetMapping("edit")
+	  String edit(@ModelAttribute client client,Model model) {
+		Client Client = clientRepository.findById(client.getId()).get();
+	    model.addAttribute("client", Client);
+		List<Prefectures> prefectures = clientService.findAllPrefectures();
+		model.addAttribute("prefectures", prefectures);
+		List<Industry> industry  = clientService.findAllIndustry();
+		model.addAttribute("industry", industry);
+		List<Statuses> statuses  = clientService.findAllStatuses();
+		model.addAttribute("statuses", statuses);
+	    return "edit";
+	  }
+
+	  @RequestMapping(value = "/postupdate", method = RequestMethod.POST)
+	  String update(@ModelAttribute client client) {
+		clientService.save(client.getId(),client.getName(),client.getPostal_code(),client.getPrefectures(),
+				   client.getStreet_address(),client.getPhone_number(),client.getPhone_number_sub(),
+				   client.getIndustry(),client.getStatus());
+	    return "redirect:/";
+	  }
 }

@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link th:href="@{/css/CreateClient.css}" rel="stylesheet" />
+<title>SignUp</title>
+</head>
+<body>
+ 	<div class="main">
+		<div class="header">
+			<div class="top-title">＠顧客管理システム</div>
+			<ul class="ddmenu">
+				<li><a href="#">≡</a>
+					<ul>
+						<li><a href="#">ユーザ名</a></li>
+						<li><a href="#">ログアウト</a></li>
+
+					</ul></li>
+			</ul>
+		</div>
+		<div class="form-main">
+			<form class="contact" th:action="@{/postupdate}" th:method="post">
+				<div class="title">
+					<h2 class="form__headline">顧客新規登録画面</h2>
+					<ol class="btn-group">
+						<button type="submit" class="btn btn-primary" id="button-back">戻る</button>
+						<button type="submit" class="btn btn-primary" id="button-create">編集</button>
+					</ol>
+				</div>
+				<dl>
+					<dt>id名</dt>
+					<dd>
+						<input type="text" name="id" class="name" th:value="${client.id}">
+					</dd>
+					<dt>顧客名</dt>
+					<dd>
+						<input type="text" name="name" class="name" th:value="${client.name}">
+					</dd>
+ 					<dt>郵便番号</dt>
+					<dd>
+						<input type="text" name="postal_code" class="number"
+							placeholder="000-0000" th:value="${client.postal_code}">
+					</dd>
+					<dt>都道府県</dt>
+					<dd>
+						<select class="type" name="prefectures" th:field="${client.prefectures}" title="都道府県は必ず指定してください">
+							<option  th:each="prefectures : ${prefectures}"
+								th:value="${prefectures.id}"
+								th:text="${prefectures.prefectures}">選択してください</option>
+						</select>
+					</dd>
+					<dt>住所</dt>
+					<dd>
+						<input type="text" name="street_address" th:value="${client.street_address}"
+						class="address">
+					</dd>
+					<dt>電話番号1</dt>
+					<dd>
+						<input type="tel" name="phone_number" class="tel"
+							placeholder="(例) 090-0000-0000"
+							th:value="${client.phone_number}">
+					</dd>
+					<dt>電話番号2</dt>
+					<dd>
+						<input type="tel" name="phone_number_sub" class="tel"
+							placeholder="(例) 090-0000-0000"
+							th:value="${client.phone_number_sub}">
+					</dd>
+					<dt>業種</dt>
+					<dd>
+						<select class="type" name="industry" th:field="${client.industry}" title="業種は必ず指定してください">
+
+							<option th:each="industry : ${industry}"
+								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
+						</select>
+					</dd>
+					<dt>ステータス</dt>
+					<dd>
+						<select class="type" name="status" th:field="${client.status}" title="ステータスは必ず指定してください">
+
+							<option th:each="statuses : ${statuses}"
+								th:value="${statuses.id}" th:text="${statuses.statuses}">選択してください</option>
+						</select>
+					</dd>
+					<dt>userid</dt>
+					<dd>
+							<h>idは、<span></span> です</h>
+					</dd>
+				</dl>
+			</form>
+			<div class="main-right">
+				<p id="fixed"></p>
+				<div class="box1">
+					<p>コール日</p>
+					
+					<p>会社名</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class client {
+	private Integer id;
 	private String name;
 	private String postal_code;
 	private Integer prefectures;
@@ -11,5 +12,7 @@ public class client {
 	private String phone_number;
 	private String phone_number_sub;
 	private Integer industry;
+	private Integer status;
+	private Integer user;
 
 }

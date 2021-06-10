@@ -39,4 +39,10 @@ public class Client {
 	@Column(name="industry_id")
 	private Integer industry;
 
+	@Column(name="status_id")
+	private Integer status;
+
+	@Column(name="user_id")
+	private Integer user;
+
 }

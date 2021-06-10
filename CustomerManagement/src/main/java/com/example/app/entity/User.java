@@ -44,6 +44,7 @@ public class User implements UserDetails{
 		return null;
 	}
 
+
 	//ユーザー名を返却するメソッド
 	@Override
 	public String getUsername() {

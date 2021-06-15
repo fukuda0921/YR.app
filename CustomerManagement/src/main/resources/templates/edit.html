@@ -87,12 +87,20 @@
 								th:value="${statuses.id}" th:text="${statuses.statuses}">選択してください</option>
 						</select>
 					</dd>
-					<dt>userid</dt>
+					<dt>次回架電日</dt>
 					<dd>
-							<h>idは、<span></span> です</h>
+						<input type="datetime-local" name="next_call_day" class="next_call_day"
+						th:field="${client.next_call_day}">
+					</dd>
+					<dt>備考</dt>
+					<dd>
+						<textarea  name="remarks" class="remarks"
+							th:field="${client.remarks}">
+							</textarea>
 					</dd>
 				</dl>
 			</form>
+
 			<div class="main-right">
 				<p id="fixed"></p>
 				<div class="box1">

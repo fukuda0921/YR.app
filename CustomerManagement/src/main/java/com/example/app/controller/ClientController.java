@@ -1,8 +1,10 @@
 package com.example.app.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import com.example.app.entity.Client;
 import com.example.app.entity.Industry;
 import com.example.app.entity.Prefectures;
 import com.example.app.entity.Statuses;
+import com.example.app.entity.User;
 import com.example.app.from.client;
 import com.example.app.repository.ClientRepository;
 import com.example.app.service.ClientService;
@@ -83,10 +86,13 @@ public class ClientController {
 	  }
 
 	  @RequestMapping(value = "/postupdate", method = RequestMethod.POST)
-	  String update(@ModelAttribute client client) {
+	  String update(@ModelAttribute client client,@AuthenticationPrincipal User user) {
+		  Date now = new Date();
+		  System.out.println("こんにちわ" + client.getNext_call_day());
 		clientService.save(client.getId(),client.getName(),client.getPostal_code(),client.getPrefectures(),
 				   client.getStreet_address(),client.getPhone_number(),client.getPhone_number_sub(),
-				   client.getIndustry(),client.getStatus());
+				   client.getIndustry(),client.getStatus(),user.getId(),now,client.getNext_call_day()
+				   ,client.getRemarks());
 	    return "redirect:/";
 	  }
 }

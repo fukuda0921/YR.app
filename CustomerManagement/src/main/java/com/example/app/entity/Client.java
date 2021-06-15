@@ -1,11 +1,15 @@
 package com.example.app.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -43,6 +47,16 @@ public class Client {
 	private Integer status;
 
 	@Column(name="user_id")
-	private Integer user;
+	private Integer user_id;
+
+	@Column(name="call_day")
+	private Date now;
+
+	@Column(name="next_call_day")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date next_call_day;
+
+	@Column(name="remarks")
+	private String remarks;
 
 }

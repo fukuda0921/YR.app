@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class ClientService {
     	client.setPhone_number(phone_number);
     	client.setPhone_number_sub(phone_number_sub);
     	client.setIndustry(industry);
+    	client.setStatus(1);
     	clientRepository.save(client);
 	}
 
@@ -65,7 +67,8 @@ public class ClientService {
 	}
 
 	public void save(Integer id,String name,String postal_code, Integer prefectures,String street_address,
-	         String phone_number,String phone_number_sub, Integer industry,Integer status) {
+	         String phone_number,String phone_number_sub, Integer industry,Integer status,Integer user_id,Date now
+	         ,Date next_call_day,String remarks) {
 		Client client = new Client();
 		client.setId(id);
 		client.setName(name);
@@ -76,6 +79,10 @@ public class ClientService {
 		client.setPhone_number_sub(phone_number_sub);
 		client.setIndustry(industry);
 		client.setStatus(status);
+		client.setUser_id(user_id);
+		client.setNow(now);
+		client.setNext_call_day(next_call_day);
+		client.setRemarks(remarks);
 		clientRepository.save(client);
 		}
 }

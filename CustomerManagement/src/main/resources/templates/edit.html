@@ -4,14 +4,114 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<link th:href="@{/css/CreateClient.css}" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link th:href="@{/css/edit.css}" rel="stylesheet" />
 <title>SignUp</title>
 </head>
 <body>
- 	<div class="main">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+   <script language="JavaScript">
+            function msgdsp() {
+                swal("登録しました");
+            }
+    </script>
+<div class="main">
+        <div class="header">
+            <div class="top-title">＠顧客管理システム</div>
+            <ul class="ddmenu">
+                <li><a href="#">≡</a>
+                    <ul>
+                        <li><a href="#">ユーザ名</a></li>
+                        <li><a href="#">ログアウト</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="form-main">
+            <form class="row g-3" th:action="@{/postupdate}" th:method="post">
+                <div class="title">
+                    <h2 class="form__headline">顧客詳細画面</h2>
+                    <ol class="btn-group">
+                        <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='リンク先'" value="戻る">
+                        <button type="submit" class="btn btn-primary" id="button-create" onclick="msgdsp()" >登録</button>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label" >ステータス</label>
+                    <select id="inputState" class="form-select" name="status" th:field="${client.status}" title="ステータスは必ず指定してください">
+                        <option th:each="statuses : ${statuses}"
+								th:value="${statuses.id}" th:text="${statuses.statuses}">選択してください</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label" >業種</label>
+                    <select class="form-select" name="industry" th:field="${client.industry}" title="業種は必ず指定してください">
+                        <option th:each="industry : ${industry}"
+								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">郵便番号</label>
+                    <input type="text" class="form-control" name="postal_code"
+                    placeholder="000-0000" th:value="${client.postal_code}">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">都道府県</label>
+                    <select class="form-select" name="prefectures" th:field="${client.prefectures}" title="都道府県は必ず指定してください">
+                        <option  th:each="prefectures : ${prefectures}"
+								th:value="${prefectures.id}"
+								th:text="${prefectures.prefectures}">選択してください</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <div class="control-group">
+                        <label for="inputAddress" class="form-label col-1">住所</label>
+                        <input type="text" class="form-control" name="street_address" th:value="${client.street_address}">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="control-group">
+                        <label for="inputAddress2" class="form-label col-1">顧客名</label>
+                        <input type="text" class="form-control" name="name" th:value="${client.name}" required>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="control-group">
+                        <label for="inputAddress2" class="form-label col-1 tel">電話番号１</label>
+                        <input type="tel" class="form-control" name="phone_number" placeholder="(例) 090-0000-0000"
+							th:value="${client.phone_number}">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="control-group">
+                        <label for="inputAddress2" class="form-label col-1 tel">電話番号２</label>
+                        <input type="tel" class="form-control" name="phone_number_sub" placeholder="(例) 090-0000-0000"
+							th:value="${client.phone_number_sub}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="text" class="form-label">備考</label>
+                    <textarea class="form-control" name="remarks" th:field="${client.remarks}" rows="7"></textarea>
+                </div>
+                <div class="col-md-4">
+                    <label for="datetime" class="form-label">次回架電日</label>
+                    <input id="datetime" class="form-control" name="next_call_day" type="datetime-local" th:field="${client.next_call_day}">
+                </div>
+            </form>
+            <div class="main-right">
+                <p id="fixed">
+                </p>
+                <div class="box1">
+                    <p>コール日</p>
+                    <p>会社名</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ 	<!-- <div class="main">
 		<div class="header">
 			<div class="top-title">＠顧客管理システム</div>
 			<ul class="ddmenu">
@@ -110,6 +210,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </body>
 </html>

@@ -255,7 +255,7 @@ ul.ddmenu ul li {   /* ※A */
     color: #005500;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
  }
 
-
-
-
+.text-id{
+	display: none;
+}
 

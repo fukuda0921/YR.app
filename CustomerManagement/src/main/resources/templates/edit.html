@@ -35,7 +35,7 @@
                 <div class="title">
                     <h2 class="form__headline">顧客詳細画面</h2>
                     <ol class="btn-group">
-                        <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='リンク先'" value="戻る">
+                        <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='/createclient/search'" value="戻る">
                         <button type="submit" class="btn btn-primary" id="button-create" onclick="msgdsp()" >登録</button>
                     </ol>
                 </div>
@@ -100,6 +100,7 @@
                     <label for="datetime" class="form-label">次回架電日</label>
                     <input id="datetime" class="form-control" name="next_call_day" type="datetime-local" th:field="${client.next_call_day}">
                 </div>
+                <input id="datetime" class="text-id" name="id" type="text" th:field="${client.id}">
             </form>
             <div class="main-right">
                 <p id="fixed">

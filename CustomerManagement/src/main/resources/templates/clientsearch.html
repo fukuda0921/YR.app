@@ -98,15 +98,14 @@
                   </tr>
                   <!--↓ここまでテーブルの項目-->
                 </thead>
-                <!--↓テーブル内の情報一覧-->
+                <!--↓データベース紐づけしたテーブル内の情報一覧-->
                 <tbody>
-
-                     <tr th:each="customer : ${result}">
-   <td th:text="${customer.id}"></td>
-      <td th:text="${customer.name}"></td>
-      <td th:text="${customer.phone_number}"></td>
-      <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
-    </tr>
+                <tr th:each="customer : ${result}">
+   				  <td th:text="${customer.id}"></td>
+      			  <td th:text="${customer.name}"></td>
+      			  <td th:text="${customer.phone_number}"></td>
+      			  <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
+    			</tr>
                 </tbody>
               </table>
             </div>
@@ -138,7 +137,8 @@
 </html>
 
 
-<!--
+<!-- ↓金子さんが作成してくれた仮検索フォーム
+
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
   <meta charset="utf-8">

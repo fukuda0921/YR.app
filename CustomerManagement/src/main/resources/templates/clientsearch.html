@@ -4,6 +4,147 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SignUp</title>
+  <!-- 追加で作成したBootStrap以外のCSSの読み込み -->
+    <link href="css/CustomerList.css" rel="stylesheet">
+
+    <!-- BootstrapのwebからとってきたCSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのWebから取ってきたJavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</head>
+<body>
+
+ <!--↓共通のheader 右上にメニューがあり、開くとユーザー名とログアウトを表示-->
+    <div class="header">
+      <div class="top-title">＠顧客管理システム
+      </div>
+      <ul class="ddmenu">
+        <li><a href="#">≡</a>
+          <ul>
+            <li><a href="#">ユーザ名</a></li>
+            <li><a href="#">ログアウト</a></li>
+          </ul>
+        </li>
+      </ul>
+    <!--↓ここまで共通のheader-->
+    </div>
+
+
+    <!-- ↓小泉が作成した顧客検索画面 -->
+    <!-- ↓金子さんが作成してくれたdiv -->
+    <div class="box">
+    <!--↓リスト一覧と右側固定画面の親クラス-->
+      <div class = "main clearfix">
+
+        <!--↓右側固定画面以外のmain画面(見出し・戻るボタン・リスト一覧)-->
+        <div class="main-left">
+          <br>
+          <!--見出しと戻るボタン-->
+          <div class ="title">
+            <!--見出し-->
+            <h1><span class="mgl-30"></span>顧客検索ページ</h1>
+            <!--戻るボタン(bootstrapを使用)-->
+            <ol class="btn-group">
+              <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='/createclient/search'" value="戻る">
+            </ol>
+            <!--↓ここまで見出しと戻るボタン-->
+          </div>
+         <br>
+         <br>
+
+         <!-- ↓金子さんが作成した検索フォーム -->
+         <form th:action="@{/search}" th:method="post">
+         <p>会社名</p>
+         <input type="text" id="name" name="name" autofocus="autofocus" />
+         <p>携帯番号1</p>
+         <input type="text" id="phone_number" name="phone_number" autofocus="autofocus" /><br/>
+         <p>業種</p>
+         <select id="industry" name="industry">
+	     <option th:each="industry : ${industry}"
+	           th:value="${industry.id}"
+	           th:text="${industry.industry}"
+	           >
+	     </option>
+         </select><br/>
+         <p>住所（都道府県）</p>
+         <select id="prefectures" name="prefectures">
+	     <option th:each="prefectures : ${prefectures}"
+	           th:value="${prefectures.id}"
+	           th:text="${prefectures.prefectures}"
+	           >
+	     </option>
+         </select><br/>
+        <button type="submit">検索</button>
+          <!-- ↓金子さんが作成した検索フォーム -->
+        </form>
+
+
+          <!--↓リスト一覧テーブル(bootstrapを使用)-->
+          <div class="container">
+            <div class="table-responsive">
+              <!--↓リスト一覧テーブルをストライプ模様にする-->
+              <table class="table table-striped">
+
+
+                <!--↓テーブルの項目-->
+                <thead>
+                  <tr>
+                    <th>顧客ID</th>
+                    <th>顧客名</th>
+                    <th>電話番号</th>
+                    <th></th>
+                  </tr>
+                  <!--↓ここまでテーブルの項目-->
+                </thead>
+                <!--↓テーブル内の情報一覧-->
+                <tbody>
+
+                     <tr th:each="customer : ${result}">
+   <td th:text="${customer.id}"></td>
+      <td th:text="${customer.name}"></td>
+      <td th:text="${customer.phone_number}"></td>
+      <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
+    </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--↓ここまでリスト一覧テーブル(bootstrapを使用)-->
+          </div>
+          <br>
+          <br>
+          <br>
+          <!--↓ここまで右側固定画面以外のmain画面(見出し・戻るボタン・件草フォーム・リスト一覧)-->
+        </div>
+
+        <!--↓共通の右側固定画面-->
+          <div class="main-right">
+            <p id="fixed">
+            </p>
+            <div class="box1">
+              <p>コール日</p>
+              <p>会社名</p>
+            </div>
+            <!--↓ここまで共通の右側固定画面-->
+          </div>
+
+        <!--↓ここまでリスト一覧と右側固定画面の親クラス-->
+      </div>
+      	<!-- ↓金子さんが作成してくれたdiv -->
+      </div>
+
+</body>
+</html>
+
+
+<!--
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
 </head>
 <body>
 <div class="box">
@@ -39,6 +180,7 @@
       <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
     </tr>
     </table>
+
 </div>
 </body>
-</html>
+</html> -->

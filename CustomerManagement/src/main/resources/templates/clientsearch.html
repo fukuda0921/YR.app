@@ -76,6 +76,14 @@
 	           >
 	     </option>
          </select><br/>
+         <p>ステータス</p>
+         <select id="status" name="status">
+	     <option th:each="statuses : ${statuses}"
+	           th:value="${statuses.id}"
+	           th:text="${statuses.statuses}"
+	           >
+	     </option>
+         </select><br/>
         <button type="submit">検索</button>
           <!-- ↓金子さんが作成した検索フォーム -->
         </form>

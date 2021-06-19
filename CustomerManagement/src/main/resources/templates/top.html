@@ -26,10 +26,21 @@
 
                 <p id="fixed">
                 </p>
-                <div class="box1">
-                    <p>コール日</p>
-                    <p>会社名</p>
+
+                <th:block th:each="client : ${client}">
+				<a th:href="@{/edit(id=${client.id})}" class="btn btn-primary">
+                <div class="box1" >
+                    <span th:text="${client.name}">
+                    </span>
+                    <p>
+                    </p>
+                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
+                    </span>
                 </div>
+                </a>
+                <p>
+                </p>
+                </th:block>
             </div>
             <div class="manu">業務メニュー</div>
             <div class="main-left">

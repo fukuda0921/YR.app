@@ -79,6 +79,14 @@
 	           th:text="${prefectures.prefectures}"
 	           >
 	     </option>
+	     </select><br/>
+	     <p>ステータス</p>
+         <select id="status" name="status">
+	     <option th:each="statuses : ${statuses}"
+	           th:value="${statuses.id}"
+	           th:text="${statuses.statuses}"
+	           >
+	     </option>
          </select><br/>
                     <button type="submit">検索</button>
                     <!-- ↓金子さんが作成した検索フォーム -->
@@ -125,10 +133,20 @@
             <div class="main-right">
                 <p id="fixed">
                 </p>
-                <div class="box1">
-                    <p>コール日</p>
-                    <p>会社名</p>
+                 <th:block th:each="client : ${client}">
+				<a th:href="@{/edit(id=${client.id})}" class="sss">
+                <div class="box1" >
+                    <span th:text="${client.name}">
+                    </span>
+                    <p>
+                    </p>
+                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
+                    </span>
                 </div>
+                </a>
+                <p>
+                </p>
+                </th:block>
                 <!--↓ここまで共通の右側固定画面-->
             </div>
 
@@ -142,51 +160,12 @@
 </html>
 
 
-↓金子さんが作成してくれた仮検索フォーム
 
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignUp</title>
-</head>
-<body>
-<div class="box">
-   <h1>顧客検索ページ</h1>
-   <form th:action="@{/search}" th:method="post">
-        <p>会社名</p>
-        <input type="text" id="name" name="name" autofocus="autofocus" />
-        <p>携帯番号1</p>
-        <input type="text" id="phone_number" name="phone_number" autofocus="autofocus" /><br/>
-        <p>業種</p>
-         <select id="industry" name="industry">
-	     <option th:each="industry : ${industry}"
-	           th:value="${industry.id}"
-	           th:text="${industry.industry}"
-	           >
-	     </option>
-         </select><br/>
-        <p>住所（都道府県）</p>
-         <select id="prefectures" name="prefectures">
-	     <option th:each="prefectures : ${prefectures}"
-	           th:value="${prefectures.id}"
-	           th:text="${prefectures.prefectures}"
-	           >
-	     </option>
-         </select><br/>
-        <button type="submit">検索</button>
-   </form>
-   <table class="table table-striped">
-   <tr th:each="customer : ${result}">
-   <td th:text="${customer.id}"></td>
-      <td th:text="${customer.name}"></td>
-      <td th:text="${customer.phone_number}"></td>
-      <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
-    </tr>
-</table>
 
-<!-- <body>
+
+<!--
+	↓金子さんが作成してくれた仮検索フォーム
+	<body>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="text.js"></script>

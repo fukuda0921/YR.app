@@ -1,5 +1,6 @@
 package com.example.app.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,11 +32,19 @@ public class ClientController {
 	 private ClientRepository clientRepository;
 
 	@GetMapping("/createclient")
-	public String index(Model model){
+	public String index(Model model,@AuthenticationPrincipal User user){
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
 		model.addAttribute("prefectures", prefectures);
 		List<Industry> industry  = clientService.findAllIndustry();
 		model.addAttribute("industry", industry);
+		List<Client> client = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < client.size();i++) {
+        	if(user.getId().equals(client.get(i).getUser_id())&&2 == client.get(i).getStatus()) {
+        		clients.add(client.get(i));
+        	}
+        }
+        model.addAttribute("client", clients);
 		return "createclient";
 	}
 
@@ -49,18 +58,26 @@ public class ClientController {
 	}
 
 	@GetMapping("/createclient/search")
-	public String search(Model model){
+	public String search(Model model,@AuthenticationPrincipal User user){
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
 		model.addAttribute("prefectures", prefectures);
 		List<Industry> industry  = clientService.findAllIndustry();
 		model.addAttribute("industry", industry);
 		List<Statuses> statuses  = clientService.findAllStatuses();
 		model.addAttribute("statuses", statuses);
+		List<Client> client = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < client.size();i++) {
+        	if(user.getId().equals(client.get(i).getUser_id())&&2 == client.get(i).getStatus()) {
+        		clients.add(client.get(i));
+        	}
+        }
+        model.addAttribute("client", clients);
 		return "clientsearch";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public String search(@ModelAttribute client client,Model model) {
+	public String search(@ModelAttribute client client,Model model,@AuthenticationPrincipal User user) {
 		// フォームの中から名前と年齢を取得してデータベース登録
 		List<Client> result = clientService.search(client.getName(),client.getPhone_number(),client.getIndustry(),
 						   client.getPrefectures(),client.getStatus());
@@ -72,6 +89,14 @@ public class ClientController {
 		model.addAttribute("industry", industry);
 		List<Statuses> statuses  = clientService.findAllStatuses();
 		model.addAttribute("statuses", statuses);
+		List<Client> clientss = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < clientss.size();i++) {
+        	if(user.getId().equals(clientss.get(i).getUser_id())&&2 == clientss.get(i).getStatus()) {
+        		clients.add(clientss.get(i));
+        	}
+        }
+        model.addAttribute("client", clients);
 		return "clientsearch";
 	}
 

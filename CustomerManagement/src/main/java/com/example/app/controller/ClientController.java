@@ -101,7 +101,7 @@ public class ClientController {
 	}
 
 	@GetMapping("edit")
-	  String edit(@ModelAttribute client client,Model model) {
+	  String edit(@ModelAttribute client client,Model model,@AuthenticationPrincipal User user) {
 		Client Client = clientRepository.findById(client.getId()).get();
 	    model.addAttribute("client", Client);
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
@@ -110,6 +110,14 @@ public class ClientController {
 		model.addAttribute("industry", industry);
 		List<Statuses> statuses  = clientService.findAllStatuses();
 		model.addAttribute("statuses", statuses);
+		List<Client> clientss = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < clientss.size();i++) {
+        	if(user.getId().equals(clientss.get(i).getUser_id())&&2 == clientss.get(i).getStatus()) {
+        		clients.add(clientss.get(i));
+        	}
+        }
+        model.addAttribute("clients", clients);
 	    return "edit";
 	  }
 

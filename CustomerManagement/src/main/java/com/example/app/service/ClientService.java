@@ -44,6 +44,10 @@ public class ClientService {
     	clientRepository.save(client);
 	}
 
+	public List<Client> findAllClient() {
+		return clientRepository.findAll();
+	}
+
 	public List<Prefectures> findAllPrefectures() {
 		return prefecturesRepository.findAll();
 	}
@@ -56,12 +60,13 @@ public class ClientService {
 		return statusesRepository.findAll();
 	}
 
-	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures) {
+	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures,
+			Integer status) {
 		List<Client> result;
-		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0) {
+		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0 && status == 0) {
 			result = clientRepository.findAll();
 		} else {
-			result = clientCustomRepository.search(name, phone_number, industry, prefectures);
+			result = clientCustomRepository.search(name, phone_number, industry, prefectures,status);
 		}
 		return result;
 	}

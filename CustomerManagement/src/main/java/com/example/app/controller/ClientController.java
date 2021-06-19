@@ -63,12 +63,15 @@ public class ClientController {
 	public String search(@ModelAttribute client client,Model model) {
 		// フォームの中から名前と年齢を取得してデータベース登録
 		List<Client> result = clientService.search(client.getName(),client.getPhone_number(),client.getIndustry(),
-						   client.getPrefectures());
+						   client.getPrefectures(),client.getStatus());
+		System.out.println("hell"+client.getPrefectures());
 		model.addAttribute("result", result);
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
 		model.addAttribute("prefectures", prefectures);
 		List<Industry> industry  = clientService.findAllIndustry();
 		model.addAttribute("industry", industry);
+		List<Statuses> statuses  = clientService.findAllStatuses();
+		model.addAttribute("statuses", statuses);
 		return "clientsearch";
 	}
 

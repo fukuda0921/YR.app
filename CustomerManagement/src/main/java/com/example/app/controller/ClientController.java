@@ -73,6 +73,7 @@ public class ClientController {
 	  String edit(@ModelAttribute client client,Model model) {
 		Client Client = clientRepository.findById(client.getId()).get();
 	    model.addAttribute("client", Client);
+	    System.out.println(Client);
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
 		model.addAttribute("prefectures", prefectures);
 		List<Industry> industry  = clientService.findAllIndustry();

@@ -13,6 +13,6 @@ public class client {
 	private String phone_number_sub;
 	private Integer industry;
 	private Integer status;
-	private Integer user;
+	
 
 }

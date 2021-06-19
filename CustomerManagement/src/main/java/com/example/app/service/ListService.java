@@ -12,7 +12,12 @@ import com.example.app.repository.StatusesRepository;
 public class ListService {
 	@Autowired
 	private StatusesRepository statusesRepository;
+
+
 	public List<Statuses> findAllStatuses() {
 		return statusesRepository.findAll();
 	}
+
+
+
 }

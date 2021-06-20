@@ -61,12 +61,13 @@ public class ClientService {
 	}
 
 	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures,
-			Integer status) {
+			Integer status,Date local1,Date local2) {
 		List<Client> result;
-		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0 && status == 0) {
+		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0 && status == 0
+				&& local1 == null && local2 == null) {
 			result = clientRepository.findAll();
 		} else {
-			result = clientCustomRepository.search(name, phone_number, industry, prefectures,status);
+			result = clientCustomRepository.search(name, phone_number, industry, prefectures,status,local1,local2);
 		}
 		return result;
 	}

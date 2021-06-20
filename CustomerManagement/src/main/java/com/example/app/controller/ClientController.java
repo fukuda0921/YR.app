@@ -79,9 +79,10 @@ public class ClientController {
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	public String search(@ModelAttribute client client,Model model,@AuthenticationPrincipal User user) {
 		// フォームの中から名前と年齢を取得してデータベース登録
+		System.out.println("hello"+client);
 		List<Client> result = clientService.search(client.getName(),client.getPhone_number(),client.getIndustry(),
 						   client.getPrefectures(),client.getStatus(),client.getLocal1(),client.getLocal2());
-		System.out.println("hell"+client.getPrefectures());
+
 		model.addAttribute("result", result);
 		List<Prefectures> prefectures = clientService.findAllPrefectures();
 		model.addAttribute("prefectures", prefectures);

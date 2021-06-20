@@ -38,7 +38,7 @@
 			</ul>
 		</div>
 		<div class="form-main">
-			<form class="row g-3">
+			<form class="row g-3" th:action="@{/search}" th:method="post">
 				<div class="title">
 					<h2 class="form__headline">顧客検索画面</h2>
 					<ol class="btn-group">
@@ -51,20 +51,20 @@
 				<div class="col-12">
 					<div class="control-group">
 						<label for="inputAddress2" class="form-label col-1">会社名</label> <input
-							type="text" class="form-control" id="name">
+							type="text" class="form-control" id="name" name="name">
 					</div>
 				</div>
 
 				<div class="col-12">
 					<div class="control-group">
 						<label for="inputAddress2" class="form-label col-1 tel">電話番号</label>
-						<input type="text" class="form-control" id="phone_number">
+						<input type="text" class="form-control" id="phone_number" name="phone_number">
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="control-group">
 						<label for="inputState" class="form-label col-1">業種</label> <select
-							id="industry" class="form-select">
+							id="industry" class="form-select" name="industry">
 							<option th:each="industry : ${industry}"
 								th:value="${industry.id}" th:text="${industry.industry}">
 							</option>
@@ -74,7 +74,7 @@
 				<div class="col-12">
 					<div class="control-group">
 						<label for="inputState" class="form-label col-1">都道府県</label> <select
-							id="prefectures" class="form-select">
+							id="prefectures" class="form-select" name="prefectures">
 							<option th:each="prefectures : ${prefectures}"
 								th:value="${prefectures.id}"
 								th:text="${prefectures.prefectures}"></option>
@@ -83,9 +83,9 @@
 				</div>
 				<div class="col-md-5 ">
 					<div class="control-group">
-						<label for="datetime" class="form-label col-3" id="kaden">次回架電日</label>
-						<input id="datetime" class="form-control" type="date"
-							name="datetime">
+						<label for="datetime" class="form-label col-3" id="kaden">最終架電日</label>
+						<input id="datetime" class="form-control" type="datetime-local"
+							name="local1">
 					</div>
 					
 				</div>
@@ -94,15 +94,18 @@
 				<div class="col-md-4">
 					<div class="control-group">
 						<label for="datetime" class="form-label"></label> <input
-							id="datetime" class="form-control" type="date" name="datetime">
+							id="datetime" class="form-control" type="datetime-local" name="local2">
 					</div>
 				</div>
 				<div class="col-12">
 					<div class="control-group">
 						<label for="inputState" class="form-label col-1">コール結果</label> <select
-							id="" class="form-select">
-							<option selected></option>
-							<option>...</option>
+							id="" class="form-select" name="status">
+							 <option th:each="statuses : ${statuses}"
+	           						 th:value="${statuses.id}"
+	           						 th:text="${statuses.statuses}"
+	          				 >
+	    					 </option>
 						</select>
 					</div>
 				</div>
@@ -111,9 +114,11 @@
 				<div class="container">
 					<div class="row mb-5">
 						<div class="col-2">
-							<button type="button" class="btn btn-primary mb-12"
+							<button type="submit" class="btn btn-primary mb-12"
 								data-toggle="modal" data-target="#kensaku">検索</button>
 						</div>
+						</form>
+						<form>
 						<div class="col-2">
 							<a class="btn btn-primary" data-toggle="modal"
 								data-target="#testModal">リスト作成</a>
@@ -143,7 +148,15 @@
 						</div>
 					</div>
 				</div>
-
+				</form>
+				 <tbody>
+				<tr th:each="customer : ${result}">
+   				  <td th:text="${customer.id}"></td>
+      			  <td th:text="${customer.name}"></td>
+      			  <td th:text="${customer.phone_number}"></td>
+      			  <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
+    			</tr>
+                </tbody>
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 					crossorigin="anonymous"></script>
@@ -159,7 +172,7 @@
 
 
 
-			</form>
+
 			<!-- <ol class="btn-group">
                 <button type="submit" class="btn btn-primary" id="button-back">検索</button>
             </ol>

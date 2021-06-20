@@ -7,10 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.app.entity.Client;
 import com.example.app.entity.Statuses;
+import com.example.app.from.list;
 import com.example.app.service.ClientService;
 import com.example.app.service.ListService;
 
@@ -41,6 +45,13 @@ public class ListController {
     	 }
     	 model.addAttribute("client", client);
     	 return "customers";
+     }
+
+     @RequestMapping(value = "/createlist", method = RequestMethod.POST)
+ 	public String createlist(@ModelAttribute list statuse) {
+ 		// フォームの中から名前と年齢を取得してデータベース登録処理へ
+ 		ListService.save(statuse.getStatuses());
+ 		return "redirect:/";
      }
 
 }

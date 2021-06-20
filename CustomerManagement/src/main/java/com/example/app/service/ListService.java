@@ -17,6 +17,13 @@ public class ListService {
 	public List<Statuses> findAllStatuses() {
 		return statusesRepository.findAll();
 	}
+	public void save(String statuses) {
+     Statuses statuse  = new Statuses();
+     statuse.setStatuses(statuses);
+     System.out.println(statuses);
+      statusesRepository.save(statuse);
+	}
+
 
 
 

@@ -1,6 +1,7 @@
 package com.example.app.repository;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -20,7 +21,7 @@ public class ClientCustomRepositoryImpl implements ClientCustomRepository {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Client> search(String name, String phone_number, Integer industry_id, Integer prefectures
-			,Integer status) {
+			,Integer status,Date local1,Date local2) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT g From Client g WHERE ");
 		boolean andFlg = false;
@@ -29,6 +30,8 @@ public class ClientCustomRepositoryImpl implements ClientCustomRepository {
 		boolean industryFlg = false;
 		boolean prefecturesFlg = false;
 		boolean statusFlg = false;
+		boolean local1Flg = false;
+		boolean local2Flg = false;
 		if (!"".equals(name) && name != null) {
 			sql.append(" g.name LIKE :name ");
 			nameFlg = true;
@@ -59,12 +62,26 @@ public class ClientCustomRepositoryImpl implements ClientCustomRepository {
 			statusFlg = true;
 			andFlg = true;
 		}
+		if (local1 != null) {
+			if (andFlg) sql.append(" AND ");
+			sql.append("g.now >= :local1 ");
+			local1Flg = true;
+			andFlg = true;
+		}
+		if (local2 != null) {
+			if (andFlg) sql.append(" AND ");
+			sql.append("g.now >= :local2 ");
+			local2Flg = true;
+			andFlg = true;
+		}
 		Query query = manager.createQuery(sql.toString());
 		if (nameFlg) query.setParameter("name", "%" + name + "%");
 		if (phone_numberFlg) query.setParameter("phone_number", "%" + phone_number + "%");
 		if (industryFlg) query.setParameter("industry_id",industry_id);
 		if (prefecturesFlg) query.setParameter("prefectures", prefectures );
 		if (statusFlg) query.setParameter("status", status );
+		if (local1Flg) query.setParameter("local1", local1);
+		if (local2Flg) query.setParameter("local2", local2);
 		return query.getResultList();
 	}
 }

@@ -80,7 +80,7 @@ public class ClientController {
 	public String search(@ModelAttribute client client,Model model,@AuthenticationPrincipal User user) {
 		// フォームの中から名前と年齢を取得してデータベース登録
 		List<Client> result = clientService.search(client.getName(),client.getPhone_number(),client.getIndustry(),
-						   client.getPrefectures(),client.getStatus());
+						   client.getPrefectures(),client.getStatus(),client.getLocal1(),client.getLocal2());
 		System.out.println("hell"+client.getPrefectures());
 		model.addAttribute("result", result);
 		List<Prefectures> prefectures = clientService.findAllPrefectures();

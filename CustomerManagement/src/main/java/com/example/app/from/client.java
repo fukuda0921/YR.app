@@ -22,6 +22,13 @@ public class client {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private Date next_call_day;
+
 	private String remarks;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date local1;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date local2;
 
 }

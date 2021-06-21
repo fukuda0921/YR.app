@@ -43,17 +43,17 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">郵便番号</label>
-                        <input type="text" class="form-control" name="postal_code" placeholder="000-0000の表記に従って入力してください" required>
+                        <input type="text" class="form-control" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="000-0000の表記に従って入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">都道府県</label>
-                        <select  class="form-select" name="prefectures">
+                        <select  class="form-select" name="prefectures" required>
                         	<option hidden>選択してください</option>
                             <option  th:each="prefectures : ${prefectures}"
 								th:value="${prefectures.id}"
-								th:text="${prefectures.prefectures}" required>選択してください</option>
+								th:text="${prefectures.prefectures}">選択してください</option>
                         </select>
                     </div>
                 </div>
@@ -66,22 +66,22 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号１</label>
-                        <input type="text" class="form-control" name="phone_number" placeholder="(例) 090-0000-0000の表記に従って入力してください" required>
+                        <input type="text" class="form-control" name="phone_number" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号２</label>
-                        <input type="text" class="form-control" name="phone_number_sub" placeholder="(例) 090-0000-0000の表記に従って入力してください" required>
+                        <input type="text" class="form-control" name="phone_number_sub"  pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">業種</label>
-                        <select class="form-select" name="industry">
+                        <select class="form-select" name="industry" required>
                            <option hidden value="">選択してください</option>
                            <option th:each="industry : ${industry}"
-								th:value="${industry.id}" th:text="${industry.industry}" required>選択してください</option>
+								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
                         </select>
                     </div>
                 </div>

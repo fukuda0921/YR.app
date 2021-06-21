@@ -1,5 +1,6 @@
 package com.example.app.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class ClientService {
     	clientRepository.save(client);
 	}
 
+	public List<Client> findAllClient() {
+		return clientRepository.findAll();
+	}
+
 	public List<Prefectures> findAllPrefectures() {
 		return prefecturesRepository.findAll();
 	}
@@ -58,18 +63,22 @@ public class ClientService {
 		return clientRepository.findAll();
 	}
 
-	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures) {
+	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures,
+			Integer status,Date local1,Date local2) {
 		List<Client> result;
-		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0) {
+
+		if ("".equals(name) && "".equals(phone_number) && industry == 0 && prefectures == 0 && status == 1
+				&& local1 == null && local2 == null) {
 			result = clientRepository.findAll();
 		} else {
-			result = clientCustomRepository.search(name, phone_number, industry, prefectures);
+			result = clientCustomRepository.search(name, phone_number, industry, prefectures,status,local1,local2);
 		}
 		return result;
 	}
 
 	public void save(Integer id,String name,String postal_code, Integer prefectures,String street_address,
-	         String phone_number,String phone_number_sub, Integer industry,Integer status) {
+	         String phone_number,String phone_number_sub, Integer industry,Integer status,Integer user_id,Date now
+	         ,Date next_call_day,String remarks) {
 		Client client = new Client();
 		client.setId(id);
 		client.setName(name);
@@ -80,6 +89,10 @@ public class ClientService {
 		client.setPhone_number_sub(phone_number_sub);
 		client.setIndustry(industry);
 		client.setStatus(status);
+		client.setUser_id(user_id);
+		client.setNow(now);
+		client.setNext_call_day(next_call_day);
+		client.setRemarks(remarks);
 		clientRepository.save(client);
 		}
 }

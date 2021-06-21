@@ -1,5 +1,9 @@
 package com.example.app.from;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -13,4 +17,20 @@ public class client {
 	private String phone_number_sub;
 	private Integer industry;
 	private Integer status;
+
+	private Integer user_id;
+	private Date now;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date next_call_day;
+
+	private String remarks;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date local1;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+	private Date local2;
+
+
 }

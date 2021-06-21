@@ -13,8 +13,7 @@ public class ListService {
 	@Autowired
 	private StatusesRepository statusesRepository;
 
-
-	public List<Statuses> findAllStatuses() {
+    public List<Statuses> findAllStatuses() {
 		return statusesRepository.findAll();
 	}
 	public void save(String statuses) {
@@ -23,8 +22,4 @@ public class ListService {
      System.out.println(statuses);
       statusesRepository.save(statuse);
 	}
-
-
-
-
 }

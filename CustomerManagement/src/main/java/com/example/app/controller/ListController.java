@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.app.entity.Client;
 import com.example.app.entity.Statuses;
 import com.example.app.from.list;
+import com.example.app.repository.ClientRepository;
+import com.example.app.repository.StatusesRepository;
 import com.example.app.service.ClientService;
 import com.example.app.service.ListService;
 
@@ -24,6 +26,11 @@ public class ListController {
 	 private ListService ListService;
 	@Autowired
 	private ClientService clientService;
+	@Autowired
+	private StatusesRepository statusesRepository;
+	@Autowired//オートワイヤリング設定(DIコンテナから型が一致するものを取り出しインジェクションする)
+	 private ClientRepository clientRepository;
+
 	@GetMapping("/list")
 	public String list(Model model){
 		List<Statuses> statuses = ListService.findAllStatuses();
@@ -48,11 +55,27 @@ public class ListController {
      }
 
      @RequestMapping(value = "/createlist", method = RequestMethod.POST)
- 	public String createlist(@ModelAttribute list statuse) {
+ 	public String createlist(Model model,@ModelAttribute list statuse) {
  		// フォームの中から名前と年齢を取得してデータベース登録処理へ
+    	 System.out.println("hyuh"+statuse);
  		ListService.save(statuse.getStatuses());
+ 		List<Statuses> newestid = statusesRepository.findAll();
+
+ 		for(int i=0;i < statuse.getIds().size();i++) {
+ 			Client Client = clientRepository.findById(statuse.getIds().get(i)).get();
+
+ 			clientService.save(Client.getId(),Client.getName(),Client.getPostal_code(),Client.getPrefectures(),
+ 					Client.getStreet_address(),Client.getPhone_number(),Client.getPhone_number_sub(),Client.getIndustry(),
+ 					newestid.get(newestid.size()-1).getId());
+
+
+ 		}
+
+	    model.addAttribute("newestid", newestid);
+
  		return "redirect:/";
      }
+
 
 }
 

@@ -17,6 +17,7 @@ public class client {
 	private String phone_number_sub;
 	private Integer industry;
 	private Integer status;
+
 	private Integer user_id;
 	private Date now;
 
@@ -30,5 +31,6 @@ public class client {
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
 	private Date local2;
+
 
 }

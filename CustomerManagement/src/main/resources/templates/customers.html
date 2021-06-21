@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer</title>
+</head>
+<body>
+<div class="box">
+   <h1></h1>
+        <table class="table table-striped">
+        <tr th:each="client : ${client}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.name}"></td>
+        </tr>
+        </table>
+
+</div>
+</body>

@@ -59,6 +59,9 @@ public class ClientService {
 	public List<Statuses> findAllStatuses() {
 		return statusesRepository.findAll();
 	}
+	public List<Client> findAllClient(){
+		return clientRepository.findAll();
+	}
 
 	public List<Client> search(String name, String phone_number, Integer industry, Integer prefectures,
 			Integer status,Date local1,Date local2) {

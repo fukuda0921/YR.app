@@ -78,8 +78,8 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">業種</label>
-                        <select class="form-select" neme="industry">
-                           <option hidden value="null">選択してください</option>
+                        <select class="form-select" name="industry">
+                           <option hidden value="">選択してください</option>
                            <option th:each="industry : ${industry}"
 								th:value="${industry.id}" th:text="${industry.industry}" required>選択してください</option>
                         </select>

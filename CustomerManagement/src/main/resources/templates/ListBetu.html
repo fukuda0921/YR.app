@@ -47,7 +47,7 @@
             <h1><span class="mgl-30"></span>条件別リスト一覧</h1>
             <!--戻るボタン(bootstrapを使用)-->
             <ol class="btn-group">
-              <button type="submit" class="btn btn-primary" id="button-back">戻る</button>
+              <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='/'" value="戻る">
             </ol>
             <!--↓ここまで見出しと戻るボタン-->
           </div>
@@ -62,22 +62,26 @@
                 <!--↓テーブルの項目-->
                 <thead>
                   <tr>
-                    <th><h3>リスト名</h3></th>
+                  <th></th>
+                    <th><div class="tablelists" style="text-align:center;">リストID</div></th>
+
+                    <th ><div class="tablelist">リスト名</div></th>
                     <th></th>
-                    <th><h3>リスト作成日</h3></th>
-                    <th><h3>リスト作成者</h3></th>
+
                   </tr>
                   <!--↓ここまでテーブルの項目-->
                 </thead>
                 <!--↓テーブル内の情報一覧-->
                 <tbody>
-                  <tr>
+                  <tr th:each="statuse : ${statuses}">
                     <!--↓リスト名をボタンにしてある。一旦GoogleのURLに飛ぶようになっている-->
                     <!--↓このテーブル内の値は仮のもの。DBと紐づける予定-->
-                    <th scope="row"><button type="button" class="btn btn-link"><a href="http://www.google.co.jp"><h3>北海道リスト</h3></a></button></th>
                     <td></td>
-                    <td><h4>2021/05/01</h4></td>
-                    <td><h4>小泉恭介</h4></td>
+                    <td align="center" th:text="${statuse.id}" ></td>
+
+
+                    <td ><a th:href="@{/customers(id=${statuse.id})}" class="btn btn-primary" th:text="${statuse.statuses}" ></a></td>
+					<td></td>
                   </tr>
 
                   <!--↓ここまでテーブル内の情報一覧-->
@@ -98,10 +102,20 @@
           <div class="main-right">
             <p id="fixed">
             </p>
-            <div class="box1">
-              <p>コール日</p>
-              <p>会社名</p>
-            </div>
+            <th:block th:each="client : ${client}">
+				<a th:href="@{/edit(id=${client.id})}" class="sss">
+                <div class="box1" >
+                    <span th:text="${client.name}">
+                    </span>
+                    <p>
+                    </p>
+                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
+                    </span>
+                </div>
+                </a>
+                <p>
+                </p>
+                </th:block>
             <!--↓ここまで共通の右側固定画面-->
           </div>
 

@@ -128,3 +128,24 @@ ul.ddmenu ul li a:hover {   /* ※C */
           padding: 0;
       }
 
+h3{
+   text-align:center;
+   font-size:20px;
+   font-weight: bold;
+   }
+
+.tablelist{
+	font-size:25px;
+	margin-left: 310px;
+}
+
+.tablelists{
+	font-size:25px;
+	txet-aligin:center;
+}
+
+.btn-primary {
+
+    width: 100%;
+}
+

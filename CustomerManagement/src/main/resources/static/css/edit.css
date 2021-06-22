@@ -70,7 +70,7 @@ form{
 
 .header {
     height:43px;
-    background-color:gainsboro;
+       background-color: black;
 }
 .top-title{
    color:blue;
@@ -183,6 +183,7 @@ form{
             margin: 0;
             padding: 0;
         }
+.box a { text-decoration:none }
 
 /* -------------------- */
 /* ▼メニューバーの装飾 */

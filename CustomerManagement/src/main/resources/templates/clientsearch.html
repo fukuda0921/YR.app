@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-<script
+	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="text.js"></script>
@@ -43,7 +44,7 @@
 					<ol class="btn-group">
 						<input type="button" class="btn btn-primary" id="button-back"
 							onclick="location.href='/'" value="戻る">
-							</ol>
+					</ol>
 				</div>
 
 
@@ -86,7 +87,7 @@
 						<input id="datetime" class="form-control" type="datetime-local"
 							name="local1">
 					</div>
-					
+
 				</div>
 				<label for="inputState" class="naminami col-md-2"> 〜</label>
 
@@ -113,7 +114,7 @@
 				<div class="container">
 					<div class="row mb-5">
 						<div class="col-2">
-						<button type="submit" class="btn btn-primary mb-12"
+							<button type="submit" class="btn btn-primary mb-12"
 								data-toggle="modal" data-target="#kensaku">検索</button>
 						</div>
 						</form>
@@ -124,7 +125,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="modal fade" id="testModal" tabindex="-1" role="dialog"
 					aria-labelledby="basicModal" aria-hidden="true">
 					<div class="modal-dialog">
@@ -148,7 +148,7 @@
 						</div>
 					</div>
 				</div>
-</form>
+				</form>
 				 <tbody>
 				<tr th:each="customer : ${result}">
    				  <td th:text="${customer.id}"></td>
@@ -160,7 +160,7 @@
 				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 					crossorigin="anonymous"></script>
-					<script
+				<script
 					src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 					integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 					crossorigin="anonymous"></script>
@@ -183,23 +183,13 @@
 			<div class="main-right">
 				<p id="fixed"></p>
 				<div class="box1">
-					<th:block th:each="client : ${client}">
-				<a th:href="@{/edit(id=${client.id})}" class="btn btn-primary">
-                <div class="box1" >
-                    <span th:text="${client.name}">
-                    </span>
-                    <p>
-                    </p>
-                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
-                    </span>
-                </div>
-                </a>
-                <p>
-                </p>
-                </th:block>
+					<p>コール日</p>
+
+					<p>会社名</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+
 </html>

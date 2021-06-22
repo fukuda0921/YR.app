@@ -35,7 +35,7 @@ public class ListController {
 	public String list(Model model){
 		List<Statuses> statuses = ListService.findAllStatuses();
 		model.addAttribute("statuses", statuses);
-		return "list";
+		return "listBetu";
 	}
 
 
@@ -57,7 +57,6 @@ public class ListController {
      @RequestMapping(value = "/createlist", method = RequestMethod.POST)
  	public String createlist(Model model,@ModelAttribute list statuse) {
  		// フォームの中から名前と年齢を取得してデータベース登録処理へ
-    	 System.out.println("hyuh"+statuse);
  		ListService.save(statuse.getStatuses());
  		List<Statuses> newestid = statusesRepository.findAll();
 
@@ -66,7 +65,8 @@ public class ListController {
 
  			clientService.save(Client.getId(),Client.getName(),Client.getPostal_code(),Client.getPrefectures(),
  					Client.getStreet_address(),Client.getPhone_number(),Client.getPhone_number_sub(),Client.getIndustry(),
- 					newestid.get(newestid.size()-1).getId());
+ 					newestid.get(newestid.size()-1).getId(),Client.getUser_id(),Client.getNow(),Client.getNext_call_day(),
+ 					Client.getRemarks());
 
 
  		}
@@ -75,20 +75,14 @@ public class ListController {
 
  		return "redirect:/";
      }
+//     clientService.save(client.getId(),client.getName(),client.getPostal_code(),client.getPrefectures(),
+//			   client.getStreet_address(),client.getPhone_number(),client.getPhone_number_sub(),
+//			   client.getIndustry(),client.getStatus(),user.getId(),now,client.getNext_call_day()
+//			   ,client.getRemarks());
 
 
 }
 
-     //@GetMapping("/")
- 	//public String index(Model model,@AuthenticationPrincipal User user){
- 		//List<Client> client = clientService.findAllClient();
-        // for(int i=0;i < client.size();i++) {
-         	//if(user.getId().equals(client.get(i).getUser_id())&&2 == client.get(i).getStatus()) {
-         		//model.addAttribute("client", client.get(i));
-
-         	//}
-        // }
- 		//return "top";
 
 
 

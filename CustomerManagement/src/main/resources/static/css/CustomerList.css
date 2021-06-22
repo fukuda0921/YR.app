@@ -3,7 +3,7 @@
 /*↓共通headerのCSS*/
 .header {
   height:43px;
-  background-color:gainsboro;
+     background-color: black;
 }
 .top-title{
   color:blue;
@@ -116,16 +116,17 @@ ul.ddmenu ul li a:hover {   /* ※C */
 }
 
 .box1{
-  padding: 0.5em 1em;
-  margin: 0em 0;
-  color: #5d627b;
-  background: white;
-  border-top: solid 5px #5d627b;
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);}
+    padding: 0.5em 1em;
+    margin: 0em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);}
 
 .box1 p {
-          margin: 0;
-          padding: 0;
-      }
+            margin: 0;
+            padding: 0;
+        }
+.box a { text-decoration:none }
 
 

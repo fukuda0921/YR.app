@@ -20,10 +20,12 @@
                         <li><a href="#">ユーザ名</a></li>
                         <li><a href="#">ログアウト</a></li>
 
+
                     </ul>
                 </li>
             </ul>
         </div>
+
 
         <div class="form-main">
             <form class="row g-3" th:action="@{/postclient}" th:method="post">
@@ -37,19 +39,19 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">顧客名</label>
-                        <input type="text" class="form-control" name="name" placeholder="顧客名を入力">
+                        <input type="text" class="form-control" name="name" placeholder="顧客名を入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">郵便番号</label>
-                        <input type="text" class="form-control" name="postal_code" placeholder="000-0000">
+                        <input type="text" class="form-control" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="000-0000の表記に従って入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">都道府県</label>
-                        <select  class="form-select" name="prefectures">
+                        <select  class="form-select" name="prefectures" required>
                         	<option hidden>選択してください</option>
                             <option  th:each="prefectures : ${prefectures}"
 								th:value="${prefectures.id}"
@@ -60,28 +62,29 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">住所</label>
-                        <input type="text" class="form-control" name="street_address">
+                        <input type="text" class="form-control" name="street_address" placeholder="住所を入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号１</label>
-                        <input type="text" class="form-control" name="phone_number" placeholder="(例) 090-0000-0000">
+                        <input type="text" class="form-control" name="phone_number" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください" required>
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号２</label>
-                        <input type="text" class="form-control" name="phone_number_sub" placeholder="(例) 090-0000-0000">
+                        <input type="text" class="form-control" name="phone_number_sub"  pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">業種</label>
-                        <select class="form-select" neme="industry">
-                           <option hidden value="null">選択してください</option>
+                        <select class="form-select" name="industry" required>
+                           <option hidden value="">選択してください</option>
                            <option th:each="industry : ${industry}"
 								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
+
                         </select>
                     </div>
                 </div>
@@ -96,123 +99,6 @@
             </div>
         </div>
     </div>
-</body>
-</html>
-	<!--  <div class="box">
-   <h1>顧客登録ページ</h1>
-   <form th:action="@{/postclient}" th:method="post">
-        <p>会社名</p>
-        <input type="text" id="name" name="name" autofocus="autofocus" />
-        <p>郵便番号</p>
-        <input type="text" id="postal_code" name="postal_code" autofocus="autofocus" />
-        <p>住所（都道府県）</p>
-         <select id="prefectures" name="prefectures">
-	     <option th:each="prefectures : ${prefectures}"
-	           th:value="${prefectures.id}"
-	           th:text="${prefectures.prefectures}"
-	           >
-	     </option>
-         </select><br/>
-         <p>住所</p>
-        <input type="text" id="street_address" name="street_address" autofocus="autofocus"/>
-         <p>携帯番号1</p>
-        <input type="text" id="phone_number" name="phone_number" autofocus="autofocus" /><br/>
-        <p>携帯番号2</p>
-        <input type="text" id="phone_number_sub" name="phone_number_sub" autofocus="autofocus" /><br/>
-		<p>業種</p>
-         <select id="industry" name="industry">
-	     <option th:each="industry : ${industry}"
-	           th:value="${industry.id}"
-	           th:text="${industry.industry}"
-	           >
-	     </option>
-         </select><br/>
 
-
-        <button type="submit">登録</button>
-   </form>
-</div-->
-	<!-- <div class="main">
-		<div class="header">
-			<div class="top-title">＠顧客管理システム</div>
-			<ul class="ddmenu">
-				<li><a href="#">≡</a>
-					<ul>
-						<li><a href="#">ユーザ名</a></li>
-						<li><a href="#">ログアウト</a></li>
-
-					</ul></li>
-			</ul>
-		</div>
-		<div class="form-main">
-			<form class="contact" th:action="@{/postclient}" th:method="post">
-				<div class="title">
-					<h2 class="form__headline">顧客新規登録画面</h2>
-					<ol class="btn-group">
-						<button type="submit" class="btn btn-primary" id="button-back">戻る</button>
-						<button type="submit" class="btn btn-primary" id="button-create">登録</button>
-					</ol>
-				</div>
-				<dl>
-					<dt>顧客名</dt>
-					<dd>
-						<input type="text" name="name" class="name">
-					</dd>
-					<dt>郵便番号</dt>
-					<dd>
-						<input type="text" name="postal_code" class="number"
-							placeholder="000-0000">
-					</dd>
-					<dt>都道府県</dt>
-					<dd>
-						<select class="type" name="prefectures" title="都道府県は必ず指定してください">
-							<option  th:each="prefectures : ${prefectures}"
-								th:value="${prefectures.id}"
-								th:text="${prefectures.prefectures}">選択してください</option>
-						</select>
-					</dd>
-					<dt>住所</dt>
-					<dd>
-						<input type="text" name="street_address" class="address">
-					</dd>
-					<dt>電話番号1</dt>
-					<dd>
-						<input type="tel" name="phone_number" class="tel"
-							placeholder="(例) 090-0000-0000">
-					</dd>
-					<dt>電話番号2</dt>
-					<dd>
-						<input type="tel" name="phone_number_sub" class="tel"
-							placeholder="(例) 090-0000-0000">
-					</dd>
-					<dt>業種</dt>
-					<dd>
-						<select class="type" name="industry" title="業種は必ず指定してください">
-
-							<option th:each="industry : ${industry}"
-								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
-						</select>
-					</dd>
-				</dl>
-			</form>
-			<div class="main-right">
-				<p id="fixed"></p>
-				<th:block th:each="client : ${client}">
-				<a th:href="@{/edit(id=${client.id})}" class="sss">
-                <div class="box1" >
-                    <span th:text="${client.name}">
-                    </span>
-                    <p>
-                    </p>
-                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
-                    </span>
-                </div>
-                </a>
-                <p>
-                </p>
-                </th:block>
-			</div>
-		</div>
-	</div>
 </body>
 </html> -->

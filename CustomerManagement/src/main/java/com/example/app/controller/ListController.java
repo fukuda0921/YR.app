@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.app.entity.Client;
 import com.example.app.entity.Statuses;
+import com.example.app.entity.User;
 import com.example.app.from.list;
 import com.example.app.repository.ClientRepository;
 import com.example.app.repository.StatusesRepository;
@@ -32,7 +34,15 @@ public class ListController {
 	 private ClientRepository clientRepository;
 
 	@GetMapping("/list")
-	public String list(Model model){
+	public String list(Model model,@AuthenticationPrincipal User user){
+		List<Client> client = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < client.size();i++) {
+        	if(user.getId().equals(client.get(i).getUser_id())&&2 == client.get(i).getStatus()) {
+        		clients.add(client.get(i));
+        	}
+        }
+        model.addAttribute("client", clients);
 		List<Statuses> statuses = ListService.findAllStatuses();
 		model.addAttribute("statuses", statuses);
 		return "listBetu";
@@ -40,7 +50,15 @@ public class ListController {
 
 
      @GetMapping("/customers")
-     public String getClient(Model model,@RequestParam Integer id) {
+     public String getClient(Model model,@RequestParam Integer id,@AuthenticationPrincipal User user) {
+    	 List<Client> clientss = clientService.findAllClient();
+ 		List<Client> clientsss= new ArrayList<>();
+         for(int i=0;i < clientss.size();i++) {
+         	if(user.getId().equals(clientss.get(i).getUser_id())&&2 == clientss.get(i).getStatus()) {
+         		clientsss.add(clientss.get(i));
+         	}
+         }
+         model.addAttribute("clientss", clientsss);
     	 List<Client> clients = clientService.findAllClient();
     	 List<Client> client= new ArrayList<>();
 

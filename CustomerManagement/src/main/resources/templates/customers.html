@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!-- <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,4 +16,128 @@
         </table>
 
 </div>
+</body> -->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>list</title>
+  <!-- 追加で作成したBootStrap以外のCSSの読み込み -->
+    <link href="css/CustomerList.css" rel="stylesheet">
+
+    <!-- BootstrapのwebからとってきたCSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのWebから取ってきたJavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</head>
+<body>
+
+ <!--↓共通のheader 右上にメニューがあり、開くとユーザー名とログアウトを表示-->
+    <div class="header">
+      <div class="top-title">＠顧客管理システム
+      </div>
+      <ul class="ddmenu">
+        <li><a href="#">≡</a>
+          <ul>
+            <li><a href="#">ユーザ名</a></li>
+            <li><a href="#">ログアウト</a></li>
+          </ul>
+        </li>
+      </ul>
+    <!--↓ここまで共通のheader-->
+    </div>
+
+
+    <!-- ↓小泉が作成した顧客検索画面 -->
+    <!-- ↓金子さんが作成してくれたdiv -->
+    <div class="box">
+    <!--↓リスト一覧と右側固定画面の親クラス-->
+      <div class = "main clearfix">
+
+        <!--↓右側固定画面以外のmain画面(見出し・戻るボタン・リスト一覧)-->
+        <div class="main-left">
+          <br>
+          <!--見出しと戻るボタン-->
+          <div class ="title">
+            <!--見出し-->
+            <h1><span class="mgl-30"></span>リスト一覧ページ</h1>
+            <!--戻るボタン(bootstrapを使用)-->
+            <ol class="btn-group">
+              <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='/list'" value="戻る">
+            </ol>
+            <!--↓ここまで見出しと戻るボタン-->
+          </div>
+         <br>
+         <br>
+
+
+          <!--↓リスト一覧テーブル(bootstrapを使用)-->
+          <div class="container">
+            <div class="table-responsive">
+              <!--↓リスト一覧テーブルをストライプ模様にする-->
+              <table class="table table-striped">
+
+
+                <!--↓テーブルの項目-->
+                <thead>
+                  <tr>
+                    <th>顧客ID</th>
+                    <th>顧客名</th>
+                    <th>電話番号</th>
+                    <th></th>
+                  </tr>
+                  <!--↓ここまでテーブルの項目-->
+                </thead>
+                <!--↓テーブル内の情報一覧-->
+                <tbody>
+
+                     <tr th:each="client : ${client}">
+   <td th:text="${client.id}"></td>
+      <td th:text="${client.name}"></td>
+      <td th:text="${client.phone_number}"></td>
+      <td><a th:href="@{/edit(id=${client.id})}" class="btn btn-primary">編集</a></td>
+    </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--↓ここまでリスト一覧テーブル(bootstrapを使用)-->
+          </div>
+          <br>
+          <br>
+          <br>
+          <!--↓ここまで右側固定画面以外のmain画面(見出し・戻るボタン・件草フォーム・リスト一覧)-->
+        </div>
+
+        <!--↓共通の右側固定画面-->
+          <div class="main-right">
+            <p id="fixed">
+            </p>
+            <th:block th:each="client : ${clientss}">
+				<a th:href="@{/edit(id=${client.id})}" class="sss">
+                <div class="box1" >
+                    <span th:text="${client.name}">
+                    </span>
+                    <p>
+                    </p>
+                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
+                    </span>
+                </div>
+                </a>
+                <p>
+                </p>
+                </th:block>
+            <!--↓ここまで共通の右側固定画面-->
+          </div>
+
+        <!--↓ここまでリスト一覧と右側固定画面の親クラス-->
+      </div>
+      	<!-- ↓金子さんが作成してくれたdiv -->
+      </div>
+
 </body>
+</html>
+
+

@@ -1,43 +1,205 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SignUp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+	crossorigin="anonymous">
+<link th:href="@{/css/select1.css}" rel="stylesheet">
+<title>顧客検索画面</title>
 </head>
+
 <body>
-<div class="box">
-   <h1>顧客検索ページ</h1>
-   <form th:action="@{/search}" th:method="post">
-        <p>会社名</p>
-        <input type="text" id="name" name="name" autofocus="autofocus" />
-        <p>携帯番号1</p>
-        <input type="text" id="phone_number" name="phone_number" autofocus="autofocus" /><br/>
-        <p>業種</p>
-         <select id="industry" name="industry">
-	     <option th:each="industry : ${industry}"
-	           th:value="${industry.id}"
-	           th:text="${industry.industry}"
-	           >
-	     </option>
-         </select><br/>
-        <p>住所（都道府県）</p>
-         <select id="prefectures" name="prefectures">
-	     <option th:each="prefectures : ${prefectures}"
-	           th:value="${prefectures.id}"
-	           th:text="${prefectures.prefectures}"
-	           >
-	     </option>
-         </select><br/>
-        <button type="submit">検索</button>
-   </form>
-   <table class="table table-striped">
-   <tr th:each="customer : ${result}">
-   <td th:text="${customer.id}"></td>
-      <td th:text="${customer.name}"></td>
-      <td th:text="${customer.phone_number}"></td>
-    </tr>
-    </table>
-</div>
+<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="text.js"></script>
+	<script language="JavaScript">
+		function msgdsp() {
+			alert("登録しました");
+		}
+	</script>
+
+	<div class="main">
+		<div class="header">
+			<div class="top-title">＠顧客管理システム</div>
+			<ul class="ddmenu">
+				<li><a href="#">≡</a>
+					<ul>
+						<li><a href="#">ユーザ名</a></li>
+						<li><a href="#">ログアウト</a></li>
+
+					</ul></li>
+			</ul>
+		</div>
+		<div class="form-main">
+			<form class="row g-3" th:action="@{/search}" th:method="post">
+				<div class="title">
+					<h2 class="form__headline">顧客検索画面</h2>
+					<ol class="btn-group">
+						<input type="button" class="btn btn-primary" id="button-back"
+							onclick="location.href='/'" value="戻る">
+							</ol>
+				</div>
+
+
+				<div class="col-12">
+					<div class="control-group">
+						<label for="inputAddress2" class="form-label col-1">会社名</label> <input
+							type="text" class="form-control" id="name" name="name">
+					</div>
+				</div>
+
+				<div class="col-12">
+					<div class="control-group">
+						<label for="inputAddress2" class="form-label col-1 tel">電話番号</label>
+						<input type="text" class="form-control" id="phone_number" name="phone_number">
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="control-group">
+						<label for="inputState" class="form-label col-1">業種</label> <select
+							id="industry" class="form-select" name="industry">
+							<option th:each="industry : ${industry}"
+								th:value="${industry.id}" th:text="${industry.industry}">
+							</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="control-group">
+						<label for="inputState" class="form-label col-1">都道府県</label> <select
+							id="prefectures" class="form-select" name="prefectures">
+							<option th:each="prefectures : ${prefectures}"
+								th:value="${prefectures.id}"
+								th:text="${prefectures.prefectures}"></option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-5 ">
+					<div class="control-group">
+						<label for="datetime" class="form-label col-3" id="kaden">最終架電日</label>
+						<input id="datetime" class="form-control" type="datetime-local"
+							name="local1">
+					</div>
+					
+				</div>
+				<label for="inputState" class="naminami col-md-2"> 〜</label>
+
+				<div class="col-md-4">
+					<div class="control-group">
+						<label for="datetime" class="form-label"></label> <input
+							id="datetime" class="form-control" type="datetime-local" name="local2">
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="control-group">
+						<label for="inputState" class="form-label col-1">コール結果</label> <select
+							id="" class="form-select" name="status">
+							 <option th:each="statuses : ${statuses}"
+	           						 th:value="${statuses.id}"
+	           						 th:text="${statuses.statuses}"
+	          				 >
+	    					 </option>
+						</select>
+					</div>
+				</div>
+
+
+				<div class="container">
+					<div class="row mb-5">
+						<div class="col-2">
+						<button type="submit" class="btn btn-primary mb-12"
+								data-toggle="modal" data-target="#kensaku">検索</button>
+						</div>
+						</form>
+						<form>
+						<div class="col-2">
+							<a class="btn btn-primary" data-toggle="modal"
+								data-target="#testModal">リスト作成</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal fade" id="testModal" tabindex="-1" role="dialog"
+					aria-labelledby="basicModal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4>
+									<div class="modal-title" id="myModalLabel">リスト登録画面</div>
+								</h4>
+							</div>
+							<div class="modal-body">
+								<label>リスト名を作成してください</label><br> <input type="text"
+									class="number-name" maxlength="15" value="">
+
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">閉じる</button>
+								<button type="button" class="btn btn-danger">登録</button>
+							</div>
+						</div>
+					</div>
+				</div>
+</form>
+				 <tbody>
+				<tr th:each="customer : ${result}">
+   				  <td th:text="${customer.id}"></td>
+      			  <td th:text="${customer.name}"></td>
+      			  <td th:text="${customer.phone_number}"></td>
+      			  <td><a th:href="@{/edit(id=${customer.id})}" class="btn btn-primary">編集</a></td>
+    			</tr>
+                </tbody>
+				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+					crossorigin="anonymous"></script>
+					<script
+					src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+					integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+					crossorigin="anonymous"></script>
+				<script
+					src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+					integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+					crossorigin="anonymous"></script>
+
+
+
+
+
+			<!-- <ol class="btn-group">
+                <button type="submit" class="btn btn-primary" id="button-back">検索</button>
+            </ol>
+            <ol class="btn-group">
+                <button type="submit" class="btn btn-primary" id="button-back">戻る</button>
+            </ol> -->
+
+			<div class="main-right">
+				<p id="fixed"></p>
+				<div class="box1">
+					<th:block th:each="client : ${client}">
+				<a th:href="@{/edit(id=${client.id})}" class="btn btn-primary">
+                <div class="box1" >
+                    <span th:text="${client.name}">
+                    </span>
+                    <p>
+                    </p>
+                    <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
+                    </span>
+                </div>
+                </a>
+                <p>
+                </p>
+                </th:block>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

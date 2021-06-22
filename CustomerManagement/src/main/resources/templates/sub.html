@@ -1,15 +1,3 @@
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-<link th:href="@{/css/CreateClient.css}" rel="stylesheet" />
-<title>SignUp</title>
-</head>
-<body>
 
   <div class="main">
         <div class="header">
@@ -20,12 +8,10 @@
                         <li><a href="#">ユーザ名</a></li>
                         <li><a href="#">ログアウト</a></li>
 
-
                     </ul>
                 </li>
             </ul>
         </div>
-
 
         <div class="form-main">
             <form class="row g-3" th:action="@{/postclient}" th:method="post">
@@ -39,19 +25,19 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">顧客名</label>
-                        <input type="text" class="form-control" name="name" placeholder="顧客名を入力してください" required>
+                        <input type="text" class="form-control" name="name" placeholder="顧客名を入力">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">郵便番号</label>
-                        <input type="text" class="form-control" name="postal_code" pattern="\d{3}-?\d{4}" placeholder="000-0000の表記に従って入力してください" required>
+                        <input type="text" class="form-control" name="postal_code" placeholder="000-0000">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">都道府県</label>
-                        <select  class="form-select" name="prefectures" required>
+                        <select  class="form-select" name="prefectures">
                         	<option hidden>選択してください</option>
                             <option  th:each="prefectures : ${prefectures}"
 								th:value="${prefectures.id}"
@@ -62,29 +48,28 @@
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">住所</label>
-                        <input type="text" class="form-control" name="street_address" placeholder="住所を入力してください" required>
+                        <input type="text" class="form-control" name="street_address">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号１</label>
-                        <input type="text" class="form-control" name="phone_number" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください" required>
+                        <input type="text" class="form-control" name="phone_number" placeholder="(例) 090-0000-0000">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputAddress" class="form-label col-2">電話番号２</label>
-                        <input type="text" class="form-control" name="phone_number_sub"  pattern="\d{2,4}-\d{3,4}-\d{3,4}" placeholder="(例) 090-0000-0000の表記に従って入力してください">
+                        <input type="text" class="form-control" name="phone_number_sub" placeholder="(例) 090-0000-0000">
                     </div>
                 </div>
                 <div class="col-9 mx-auto">
                     <div class="control-group">
                         <label for="inputState" class="form-label col-2 name-1">業種</label>
-                        <select class="form-select" name="industry" required>
-                           <option hidden value="">選択してください</option>
+                        <select class="form-select" neme="industry">
+                           <option hidden value="null">選択してください</option>
                            <option th:each="industry : ${industry}"
 								th:value="${industry.id}" th:text="${industry.industry}">選択してください</option>
-
                         </select>
                     </div>
                 </div>
@@ -99,6 +84,5 @@
             </div>
         </div>
     </div>
-
 </body>
-</html> -->
+</html>

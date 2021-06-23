@@ -86,10 +86,11 @@
         font-size: 23px;
         float: left;
     }
-
+/*
     .main-left {
         display: flex;
     }
+    */
 
     .select {
         height: 180px;

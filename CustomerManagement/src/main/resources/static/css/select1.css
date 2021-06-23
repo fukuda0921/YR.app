@@ -355,3 +355,7 @@
         padding: 1rem;
         text-align: center;
     }
+
+    .clientid{
+    	display:none;
+    }

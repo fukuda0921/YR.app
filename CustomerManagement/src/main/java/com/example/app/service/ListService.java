@@ -19,7 +19,7 @@ public class ListService {
 	public void save(String statuses) {
      Statuses statuse  = new Statuses();
      statuse.setStatuses(statuses);
-     System.out.println(statuses);
+     System.out.println("どらえもん"+statuses);
       statusesRepository.save(statuse);
 	}
 }

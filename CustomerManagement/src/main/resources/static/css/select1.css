@@ -77,14 +77,13 @@
     /* top.css */
 
     .header {
-        height: 43px;
-            background-color: black;
+        height: 60px;
+        background-color: black;
     }
 
     .top-title {
-        color: blue;
-        font-size: 23px;
-        float: left;
+        width: 180px;
+ 		height: 60px;
     }
 /*
     .main-left {
@@ -247,7 +246,7 @@
         /* メニュー項目の背景色(濃い赤色) */
         color: white;
         /* メニュー項目の文字色(白色) */
-        line-height: 40px;
+        line-height: 60px;
         /* メニュー項目のリンクの高さ(40px) */
         text-align: center;
         /* メインメニューの文字列の配置(中央寄せ) */
@@ -360,3 +359,30 @@
     .clientid{
     	display:none;
     }
+
+    a{
+ text-decoration: none;
+ }
+
+ .mikomi{
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #5d627b;
+ }
+.col-22 {
+    flex: 0 0 auto;
+    width: 16.6666666667%;
+    margin-left: 242px;
+    position: relative;
+}
+ .btn-primarys {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    width:100%;
+    position: absolute;
+    left: 200px;
+    top: -68px;
+}

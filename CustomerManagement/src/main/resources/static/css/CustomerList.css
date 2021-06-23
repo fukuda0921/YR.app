@@ -1,4 +1,6 @@
+
 /*顧客情報一覧画面のCSS(小泉ちょい足し)*/
+
 
 .clearfix::after {
   clear: both;
@@ -8,4 +10,6 @@
 
 .main-left{
   float:left;
+  height:730px;
+  width:70%;
 }

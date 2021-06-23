@@ -1,21 +1,95 @@
 @charset "UTF-8";
-.wrapper {
-   width:auto;
+html {
+    height: 100%;
 }
+
+body {
+    height: 100%;
+
+}
+.main {
+    height: 100%;
+    background-color: rgb(202, 209, 200,0.25);
+}
+
+header{
+    height: 10%;
+
+}
+
+form{
+    width: 75%;
+    height: 750px;
+    padding:30px 50px;
+}
+
+.form-main{
+    width: 100%;
+    display: flex;
+}
+
+.control-group {
+    display:flex;
+}
+
+.check-pass{
+    display: flex;
+}
+
+.check-pass p{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.form-label{
+    margin: auto;
+}
+
+
+.main-right{
+    float:right;
+    height:730px;
+    width:26%;
+    background-color: white;
+}
+
+.title {
+    display: flex;
+}
+
+#btn_passview{
+    margin-right: 6px;
+    margin-top: 6px;
+}
+
+.btn-group{
+    margin-left:auto;
+    height: 50px;
+}
+
+#button-back{
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+#button-create{
+    margin-top: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+
+/* top.css */
+
 .header {
     height:60px;
-       background-color: black;
+    background-color: black;
 }
 .top-title{
     width: 180px;
     height: 60px;
 }
 
-
-.main {
-    height:730px;
-    background-color:rgb(202, 209, 200,0.25);
-}
 .main-left{
     display: flex;
 }
@@ -104,12 +178,6 @@
     color: rgba(24,25,34,0.74);
 }
 
-.main-right{
-    float:right;
-    height:730px;
-    width:255px;
-    background-color: white;
-}
 .manu{
     font-size: 30px;
     padding-top: 180px;
@@ -127,7 +195,6 @@
             margin: 0;
             padding: 0;
         }
-.box a { text-decoration:none }
 
 /* -------------------- */
 /* ▼メニューバーの装飾 */
@@ -200,7 +267,13 @@ ul.ddmenu ul li {   /* ※A */
     color: #005500;            /* サブメニュー項目にマウスが載ったときの文字色(濃い緑色) */
  }
 
-/* 見込み一覧 */
+
+/*swal*/
+
+.swal-wide{
+    width:85px !important;
+}
+
  a{
  text-decoration: none;
  }
@@ -212,53 +285,3 @@ ul.ddmenu ul li {   /* ※A */
     font-weight: 600;
     color: #5d627b;
  }
-
-/*  リセットcss */
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}

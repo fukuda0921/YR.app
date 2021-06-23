@@ -10,13 +10,14 @@
 <body>
     <div class="wrapper">
         <div class="header">
-            <div class="top-title">＠顧客管理システム</div>
+         <img src=" "alt="ロゴ" class="top-title">
             <ul class="ddmenu">
                 <li><a href="#">≡</a>
                     <ul>
                         <li><a href="#" ><span sec:authentication="principal.username"></span></a></li>
+                        <li><a href="#">user画面</a></li>
+                        <li><a href="/createclient">顧客登録</a></li>
                        <li><form th:action="@{/logout}" name="logout" method="POST"><a href="javascript:logout.submit()">ログアウト</a></form></li>
-                       <li><a href="/createclient">顧客登録</a></li>
 
                     </ul>
                  </li>

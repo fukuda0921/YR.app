@@ -119,7 +119,7 @@
 								data-toggle="modal" data-target="#kensaku">検索</button>
 						</div>
 						</form>
-						<form>
+						<form th:action="@{/createlist}" th:method="post">
 						<div class="col-2">
 							<a class="btn btn-primary" data-toggle="modal"
 								data-target="#testModal">リスト作成</a>
@@ -137,14 +137,18 @@
 							</div>
 							<div class="modal-body">
 								<label>リスト名を作成してください</label><br> <input type="text"
-									class="number-name" maxlength="15" value="">
-
+									class="number-name" name="statuses" maxlength="15" required>
+								 <tbody>
+       							 <tr th:each="customer : ${result}">
+            					<td><input type="text" name="ids" th:value="${customer.id}" class="clientid"></td>
+        						</tr>
+    							</tbody>
 
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">閉じる</button>
-								<button type="button" class="btn btn-danger">登録</button>
+								<button type="submit" class="btn btn-danger">登録</button>
 							</div>
 						</div>
 					</div>

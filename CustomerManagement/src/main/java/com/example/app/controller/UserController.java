@@ -51,7 +51,15 @@ public class UserController {
 	}
 
 	@GetMapping("/signup")
-	public String signup(){
+	public String signup(Model model,@AuthenticationPrincipal User user){
+		List<Client> client = clientService.findAllClient();
+		List<Client> clients= new ArrayList<>();
+        for(int i=0;i < client.size();i++) {
+        	if(user.getId().equals(client.get(i).getUser_id())&&2 == client.get(i).getStatus()) {
+        		clients.add(client.get(i));
+        	}
+        }
+        model.addAttribute("client", clients);
 		return "signup";
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)

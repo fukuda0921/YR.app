@@ -22,18 +22,18 @@
 
       <!--↓共通のheader 右上にメニューがあり、開くとユーザー名とログアウトを表示-->
       <div class="header">
-        <div class="top-title">＠顧客管理システム
-        </div>
-        <ul class="ddmenu">
-          <li><a href="#">≡</a>
-            <ul>
+        <a href="/"><img th:src="@{/images/Y&I.png}" alt="ロゴ" class="top-title"></a>
+            <ul class="ddmenu">
+                <li><a href="#">≡</a>
+                    <ul>
                         <li><a href="#" ><span sec:authentication="principal.username"></span></a></li>
-                        <li><a href="#">user画面</a></li>
+                        <li><a href="/signup">ユーザー登録</a></li>
                         <li><a href="/createclient">顧客登録</a></li>
                        <li><form th:action="@{/logout}" name="logout" method="POST"><a href="javascript:logout.submit()">ログアウト</a></form></li>
-            </ul>
-          </li>
-        </ul>
+
+                    </ul>
+                 </li>
+                </ul>
         <!--↓ここまで共通のheader-->
       </div>
 
@@ -46,7 +46,7 @@
           <!--見出しと戻るボタン-->
           <div class ="title">
             <!--見出し-->
-            <h1><span class="mgl-30"></span>条件別リスト一覧</h1>
+            <h1 class ="ccc"><span class="mgl-30"></span>条件別リスト一覧</h1>
             <!--戻るボタン(bootstrapを使用)-->
             <ol class="btn-group">
               <input type="button" class="btn btn-primary" id="button-back" onclick="location.href='/'" value="戻る">
@@ -102,15 +102,19 @@
 
         <!--↓共通の右側固定画面-->
           <div class="main-right">
-            <p id="fixed">
-            </p>
-            <th:block th:each="client : ${client}">
-				<a th:href="@{/edit(id=${client.id})}" class="sss">
+            <p id="fixed" class="mikomi">
+                見込み一覧
+                </p>
+
+                <th:block th:each="client : ${client}">
+				<a th:href="@{/edit(id=${client.id})}" class="ssss">
                 <div class="box1" >
-                    <span th:text="${client.name}">
+                    <span th:text="'会社名：' + ${client.name}">
+
                     </span>
                     <p>
                     </p>
+                    <span>架電予定時間</span><br>
                     <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
                     </span>
                 </div>

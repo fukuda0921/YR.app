@@ -69,13 +69,12 @@ form{
 /* top.css */
 
 .header {
-    height:43px;
+    height:60px;
        background-color: black;
 }
 .top-title{
-   color:blue;
-   font-size:23px;
-   float:left;
+   width: 180px;
+   height: 60px;
 }
 
 .main-left{
@@ -206,7 +205,7 @@ ul.ddmenu {
  ul.ddmenu a {
     background-color: silver; /* メニュー項目の背景色(濃い赤色) */
     color: white;              /* メニュー項目の文字色(白色) */
-    line-height: 40px;         /* メニュー項目のリンクの高さ(40px) */
+    line-height: 60px;         /* メニュー項目のリンクの高さ(40px) */
     text-align: center;        /* メインメニューの文字列の配置(中央寄せ) */
     text-decoration: none;     /* メニュー項目の装飾(下線を消す) */
     font-weight: bold;         /* 太字にする */
@@ -259,4 +258,16 @@ ul.ddmenu ul li {   /* ※A */
 .text-id{
 	display: none;
 }
+
+ a{
+ text-decoration: none;
+ }
+
+ .mikomi{
+    margin: 10px 0px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #5d627b;
+ }
 

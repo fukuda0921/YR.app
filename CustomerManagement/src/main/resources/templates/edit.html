@@ -20,15 +20,19 @@
     </script>
 <div class="main">
         <div class="header">
-            <div class="top-title">＠顧客管理システム</div>
+            <div class="header">
+         <a href="/"><img th:src="@{/images/Y&I.png}" alt="ロゴ" class="top-title"></a>
             <ul class="ddmenu">
                 <li><a href="#">≡</a>
                     <ul>
                         <li><a href="#" ><span sec:authentication="principal.username"></span></a></li>
-                        <li><a href="#">user画面</a></li>
+                        <li><a href="/signup">ユーザー登録</a></li>
                         <li><a href="/createclient">顧客登録</a></li>
-                       <li><form th:action="@{/logout}" name="logout" method="POST"><a href="javascript:logout.submit()">ログアウト</a></form></li>
+                       <li><a href="#" >ログアウト</a></li>
+
                     </ul>
+                 </li>
+                </ul>
                 </li>
             </ul>
         </div>
@@ -44,7 +48,7 @@
                 <div class="col-md-6">
                     <label for="inputState" class="form-label" >ステータス</label>
                     <select id="inputState" class="form-select" name="status" th:field="${client.status}" title="ステータスは必ず指定してください">
-                        <option th:each="statuses : ${statuses}"
+                        <option th:each="statuses : ${statuses}" th:if="${statuses.id} < 5"
 								th:value="${statuses.id}" th:text="${statuses.statuses}">選択してください</option>
                     </select>
                 </div>
@@ -105,15 +109,19 @@
                 <input id="datetime" class="text-id" name="id" type="text" th:field="${client.id}">
             </form>
             <div class="main-right">
-                <p id="fixed">
+                <p id="fixed" class="mikomi">
+                見込み一覧
                 </p>
+
                 <th:block th:each="client : ${clients}">
-				<a th:href="@{/edit(id=${client.id})}" class="sss">
+				<a th:href="@{/edit(id=${client.id})}" class="ssss">
                 <div class="box1" >
-                    <span th:text="${client.name}">
+                    <span th:text="'会社名：' + ${client.name}">
+
                     </span>
                     <p>
                     </p>
+                    <span>架電予定時間</span><br>
                     <span th:text="${#dates.format(client.next_call_day,'yyyy-MM-dd  HH:mm')}">
                     </span>
                 </div>
@@ -224,5 +232,6 @@
 			</div>
 		</div>
 	</div> -->
+	</div>
 </body>
 </html>

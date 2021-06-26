@@ -107,6 +107,7 @@
 						<label for="inputState" class="form-label col-1">コール結果</label> <select
 							id="" class="form-select" name="status">
 							 <option th:each="statuses : ${statuses}"
+							 		 th:if="${statuses.id} < 5"
 	           						 th:value="${statuses.id}"
 	           						 th:text="${statuses.statuses}"
 	          				 >
